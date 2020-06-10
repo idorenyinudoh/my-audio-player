@@ -42,7 +42,7 @@ button {
     border: 0;
     margin: 0;
     height: 3px;
-    background-color: #2464a6;
+    background-color: #ffa826;
 }
 #range::-webkit-slider-thumb {
     cursor: pointer;
@@ -51,6 +51,6 @@ button {
     appearance: none;
     width: 15px;
     height: 15px;
-    background-color: #ffa826;
+    background-color: #2464a6;
     border-radius: 50%;
 }
