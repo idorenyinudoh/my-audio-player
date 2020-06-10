@@ -32,6 +32,7 @@ button {
     grid-template-columns: 5ch 1fr 5ch;
     gap: 2px;
     align-items: center;
+    font-size: 18px;
 }
 #current-time, #full-time {
     justify-self: center;
