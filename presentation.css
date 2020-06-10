@@ -68,3 +68,9 @@ button {
     background-color: #5f91d8;
     border-radius: 50%;
 }
+#range::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+}
+#range::-moz-range-thumb:active {
+    transform: scale(1.2);
+}
