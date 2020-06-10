@@ -54,7 +54,7 @@ button {
     appearance: none;
     width: 15px;
     height: 15px;
-    background-color: #2464a6;
+    background-color: #5f91d8;
     border-radius: 50%;
 }
 #range::-moz-range-thumb {
@@ -65,6 +65,6 @@ button {
     appearance: none;
     width: 15px;
     height: 15px;
-    background-color: #2464a6;
+    background-color: #5f91d8;
     border-radius: 50%;
 }
