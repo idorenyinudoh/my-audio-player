@@ -32,3 +32,6 @@ button {
     gap: 2px;
     align-items: center;
 }
+#current-time, #full-time {
+    justify-self: center;
+}
