@@ -8,9 +8,6 @@ h1 {
     margin: 0;
     text-align: center;
 }
-button {
-    cursor: pointer;
-}
 #container {
     border: 1px solid black;
     width: 70vw;
@@ -22,6 +19,7 @@ button {
     gap: 2px;
 }
 #buttons {
+    cursor: pointer;
     overflow: hidden;
     border: 1px solid black;
     display: grid;
