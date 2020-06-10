@@ -8,6 +8,9 @@ h1 {
     margin: 0;
     text-align: center;
 }
+button {
+    cursor: pointer;
+}
 #container {
     border: 1px solid black;
     width: max-content;
