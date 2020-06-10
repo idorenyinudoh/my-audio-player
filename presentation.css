@@ -35,3 +35,10 @@ button {
 #current-time, #full-time {
     justify-self: center;
 }
+#range {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    margin: 0;
+}
