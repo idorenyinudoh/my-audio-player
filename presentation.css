@@ -17,3 +17,9 @@ h1 {
     justify-content: center;
     gap: 2px;
 }
+#buttons {
+    overflow: hidden;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 24px 24px;
+}
