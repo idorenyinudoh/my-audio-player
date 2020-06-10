@@ -17,6 +17,7 @@ button {
     padding: 5px;
     display: grid;
     grid-template-columns: 26px 1fr;
+    grid-template-rows: 26px;
     justify-content: center;
     gap: 2px;
 }
