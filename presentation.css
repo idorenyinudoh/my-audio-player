@@ -26,3 +26,9 @@ button {
     display: grid;
     grid-template-columns: 24px 24px;
 }
+#main {
+    display: grid;
+    grid-template-columns: 5ch 1fr 5ch;
+    gap: 2px;
+    align-items: center;
+}
