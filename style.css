@@ -55,20 +55,6 @@ h1 {
     background-color: #5f91d8;
     border-radius: 50%;
 }
-#range::-moz-range-thumb {
-    border: 0;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background-color: #5f91d8;
-    border-radius: 50%;
-}
 #range::-webkit-slider-thumb:active {
-    transform: scale(1.2);
-}
-#range::-moz-range-thumb:active {
     transform: scale(1.2);
 }
