@@ -39,12 +39,21 @@ input[type="range"]::-moz-range-track {
     width: 100%;
     height: 3px;
     cursor: pointer;
+    background-color: rgba(95, 145, 216, 0.5);
+}
+input[type="range"]::-moz-range-progress {
     background-color: #5f91d8;
 }
 input[type="range"]:focus::-moz-range-track {
+    background-color: rgba(0, 58, 119, 0.5);
+}
+input[type="range"]:focus::-moz-range-progress {
     background-color: #003a77;
 }
 input[type="range"]:active::-moz-range-track {
+    background-color: rgba(95, 145, 216, 0.5);
+}
+input[type="range"]:active::-moz-range-progress {
     background-color: #5f91d8;
 }
 input[type="range"]::-moz-range-thumb {
