@@ -16,5 +16,5 @@ range.addEventListener('pointerdown', () => {
     }
 });
 range.addEventListener('change', () => {
-    document.getElementsByTagName('html')[0].style.setProperty('--before-width', `${(range.value)/2}vw`);
+    document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
 });
