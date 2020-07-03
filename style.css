@@ -1,3 +1,6 @@
+html {
+    --before-width: 0px;
+}
 input[type="range"] {
     -webkit-appearance: none;
     width: 50vw;
