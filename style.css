@@ -1,6 +1,7 @@
 input[type="range"] {
     -webkit-appearance: none;
     width: 50vw;
+    position: relative;
 }
 input[type="range"]:focus {
     outline: none;
@@ -11,6 +12,13 @@ input[type="range"]::-webkit-slider-runnable-track {
     cursor: pointer;
     background-color: rgba(95, 145, 216, 0.5);
 }
+input[type="range"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--before-width);
+    height: 100%;
     background-color: #5f91d8;
 }
 .focus:focus::-webkit-slider-runnable-track {
