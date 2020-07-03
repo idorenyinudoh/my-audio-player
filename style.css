@@ -47,6 +47,9 @@ input[type="range"]::-moz-range-progress {
 input[type="range"]:focus::-moz-range-track {
     background-color: rgba(0, 58, 119, 0.5);
 }
+input[type="range"]::-moz-focus-outer {
+    border: 0;
+}
 input[type="range"]:focus::-moz-range-progress {
     background-color: #003a77;
 }
