@@ -28,6 +28,7 @@ input[type="range"]::before {
     background-color: #003a77;
 }
 input[type="range"]::-webkit-slider-thumb {
+    position: relative;
     -webkit-appearance: none;
     box-sizing: content-box;
     border: 1px solid #5f91d8;
