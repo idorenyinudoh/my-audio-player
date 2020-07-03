@@ -15,6 +15,6 @@ range.addEventListener('pointerdown', () => {
         range.classList.remove('focus');
     }
 });
-range.addEventListener('change', () => {
+range.addEventListener('input', () => {
     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
 });
