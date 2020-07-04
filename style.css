@@ -1,6 +1,12 @@
 html {
     --before-width: 0px;
 }
+#range-container {
+    display: grid;
+    width: max-content;
+    margin: 0 auto;
+    padding: 10px 5px;
+}
 input[type="range"] {
     -webkit-appearance: none;
     width: 50vw;
