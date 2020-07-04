@@ -1,5 +1,8 @@
 html {
     --before-width: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: -0.5px;
+}
 }
 #range-container {
     display: grid;
