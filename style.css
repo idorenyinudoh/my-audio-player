@@ -10,6 +10,9 @@ html {
     place-content: center;
     place-items: center;
 }
+.dur {
+    font-size: 15px;
+}
 #range-container {
     display: grid;
     width: max-content;
