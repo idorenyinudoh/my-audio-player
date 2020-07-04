@@ -1,4 +1,5 @@
-const range = document.getElementById('range-input');
+const range = document.getElementById('range-input'),
+rangePops = document.querySelector('div#range-container');
 
 range.addEventListener('keyup', () => {
     if(document.activeElement === range && range.classList.contains('focus') === false) {
