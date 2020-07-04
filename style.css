@@ -5,6 +5,9 @@ input[type="range"] {
     -webkit-appearance: none;
     width: 50vw;
     position: relative;
+    margin: 0;
+    padding: 0;
+    height: 19px;
 }
 input[type="range"]:focus {
     outline: none;
