@@ -7,6 +7,9 @@ html {
     margin: 0 auto;
     padding: 10px 5px;
 }
+.outline {
+    outline: 2px solid #003a77;
+}
 input[type="range"] {
     -webkit-appearance: none;
     width: 50vw;
