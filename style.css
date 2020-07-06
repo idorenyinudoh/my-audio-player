@@ -12,7 +12,7 @@ html {
     place-items: center;
 }
 #play-icon {
-    padding: 4.5px;
+    padding: calc(4.5px - 0.05vw);
     border: 0;
     background: inherit;
     width: 39px;
