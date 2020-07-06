@@ -11,6 +11,22 @@ html {
     place-content: center;
     place-items: center;
 }
+#play-icon {
+    padding: 4.5px;
+    border: 0;
+    background: inherit;
+    width: 39px;
+    height: 39px;
+}
+#play-icon:focus {
+    outline: 2px solid #003a77;
+}
+path {
+    stroke: #5f91d8;
+}
+#play-icon:focus path {
+    stroke: #003a77;
+}
 .dur {
     font-size: 15px;
 }
