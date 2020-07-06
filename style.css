@@ -5,7 +5,8 @@ html {
 }
 #main-container {
     display: grid;
-    grid-template-columns: 4ch 4ch max-content 4ch;
+    grid-template-columns: 39px 3.5ch max-content 3.5ch;
+    grid-template-rows: 39px;
     gap: 5px;
     place-content: center;
     place-items: center;
