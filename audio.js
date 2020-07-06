@@ -1,3 +1,28 @@
+const animation = bodymovin.loadAnimation({
+    container: document.getElementById('play-icon'),
+    path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    name: "play",
+});
+animation.goToAndStop(14, true);
+
+let play = true;
+
+document.getElementById('play-icon').addEventListener('click', () => {
+    if (play) {
+        animation.playSegments([14, 28], true);
+        play = false;
+    }
+    else {
+        animation.playSegments([0, 14], true);
+        play = true;	
+    }
+});
+
+
+
 const range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container');
 
