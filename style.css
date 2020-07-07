@@ -5,11 +5,14 @@ html {
 }
 #main-container {
     display: grid;
-    grid-template-columns: 39px 3.5ch max-content 3.5ch;
+    grid-template-columns: 39px 3.5ch 1fr 3.5ch;
     grid-template-rows: 39px;
     gap: 5px;
     place-content: center;
     place-items: center;
+    width: 90vw;
+    margin: auto;
+    max-width: 600px;
 }
 #play-icon {
     padding: calc(4.5px - 0.05vw);
@@ -36,7 +39,7 @@ path {
 }
 #range-container {
     display: grid;
-    width: max-content;
+    width: calc(100% - 10px);
     padding: 10px 5px;
 }
 .outline {
@@ -44,7 +47,7 @@ path {
 }
 input[type="range"] {
     -webkit-appearance: none;
-    width: 50vw;
+    width: 100%;
     position: relative;
     margin: 0;
     padding: 0;
