@@ -1,4 +1,11 @@
 const playIcon = document.getElementById('play-icon'),
+playAnimation = bodymovin.loadAnimation({
+    container: playIcon,
+    path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+    renderer: 'svg',
+    loop: false,
+    autoplay: false
+}),
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
 toggleRangeFocus = () => {
@@ -13,14 +20,6 @@ toggleRangeFocus = () => {
 };
 
 
-const playAnimation = bodymovin.loadAnimation({
-    container: playIcon,
-    path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    name: "play",
-});
 playAnimation.goToAndStop(14, true);
 
 let play = true;
