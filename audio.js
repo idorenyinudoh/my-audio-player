@@ -32,18 +32,18 @@ toggleRangeFocus = {
         }
     }
 };
-let play = true;
+let isShowingPlay = true;
 
 playAnimation.goToAndStop(14, true);
 
 playIcon.addEventListener('click', () => {
-    if (play) {
+    if (isShowingPlay) {
         playAnimation.playSegments([14, 28], true);
-        play = false;
+        isShowingPlay = false;
     }
     else {
         playAnimation.playSegments([0, 14], true);
-        play = true;	
+        isShowingPlay = true;	
     }
 });
 playIcon.addEventListener('keyup', togglePlayFocus.add);
