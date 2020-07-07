@@ -1,5 +1,6 @@
+playIcon = document.getElementById('play-icon');
 const animation = bodymovin.loadAnimation({
-    container: document.getElementById('play-icon'),
+    container: playIcon,
     path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
     renderer: 'svg',
     loop: false,
@@ -10,7 +11,7 @@ animation.goToAndStop(14, true);
 
 let play = true;
 
-document.getElementById('play-icon').addEventListener('click', () => {
+playIcon.addEventListener('click', () => {
     if (play) {
         animation.playSegments([14, 28], true);
         play = false;
