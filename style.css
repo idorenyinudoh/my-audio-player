@@ -66,10 +66,10 @@ input[type="range"]::before {
     background-color: #2464a6;
     cursor: pointer;
 }
-.focus:focus::-webkit-slider-runnable-track {
+.range-focus:focus::-webkit-slider-runnable-track {
     background-color: rgba(0, 58, 119, 0.5);
 }
-.focus:focus::before {
+.range-focus:focus::before {
     background-color: #003a77;
 }
 input[type="range"]::-webkit-slider-thumb {
@@ -89,7 +89,7 @@ input[type="range"]:active::-webkit-slider-thumb {
     background-color: #2464a6;
     transform: scale(1.2);
 }
-.focus:focus::-webkit-slider-thumb {
+.range-focus:focus::-webkit-slider-thumb {
     border-color: #003a77;
 }
 input[type="range"]::-moz-range-track {
@@ -101,13 +101,13 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-moz-range-progress {
     background-color: #2464a6;
 }
-.focus:focus::-moz-range-track {
+.range-focus:focus::-moz-range-track {
     background-color: rgba(0, 58, 119, 0.5);
 }
 input[type="range"]::-moz-focus-outer {
     border: 0;
 }
-.focus:focus::-moz-range-progress {
+.range-focus:focus::-moz-range-progress {
     background-color: #003a77;
 }
 input[type="range"]::-moz-range-thumb {
@@ -124,7 +124,7 @@ input[type="range"]:active::-moz-range-thumb {
     background-color: #2464a6;
     transform: scale(1.2);
 }
-.focus:focus::-moz-range-thumb {
+.range-focus:focus::-moz-range-thumb {
     border-color: #003a77;
 }
 input[type="range"]::-ms-track {
@@ -138,14 +138,14 @@ input[type="range"]::-ms-track {
 input[type="range"]::-ms-fill-lower {
     background-color: #2464a6;
 }
-.focus:focus::-ms-fill-lower {
+.range-focus:focus::-ms-fill-lower {
     background-color: #003a77;
 }
 input[type="range"]::-ms-fill-upper {
     background-color: #2464a6;
     opacity: 0.5;
 }
-.focus:focus::-ms-fill-upper {
+.range-focus:focus::-ms-fill-upper {
     background-color: #003a77;
 }
 input[type="range"]::-ms-thumb {
@@ -162,6 +162,6 @@ input[type="range"]:active::-ms-thumb {
     background-color: #2464a6;
     transform: scale(1.2);
 }
-.focus:focus::-ms-thumb {
+.range-focus:focus::-ms-thumb {
     border-color: #003a77;
 }

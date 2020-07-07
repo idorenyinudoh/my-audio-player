@@ -27,20 +27,20 @@ const range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container');
 
 range.addEventListener('keyup', () => {
-    if(document.activeElement === range && range.classList.contains('focus') === false) {
-        range.classList.add('focus');
+    if(document.activeElement === range && range.classList.contains('range-focus') === false) {
+        range.classList.add('range-focus');
         rangePops.classList.add('outline');
     }
 });
 range.addEventListener('blur', () => {
-    if(range.classList.contains('focus')) {
-        range.classList.remove('focus');
+    if(range.classList.contains('range-focus')) {
+        range.classList.remove('range-focus');
         rangePops.classList.remove('outline');
     }
 });
 range.addEventListener('pointerdown', () => {
-    if(range.classList.contains('focus')) {
-        range.classList.remove('focus');
+    if(range.classList.contains('range-focus')) {
+        range.classList.remove('range-focus');
         rangePops.classList.remove('outline');
     }
 });
