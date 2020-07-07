@@ -1,6 +1,6 @@
-const range = document.getElementById('range-input'),
+const playIcon = document.getElementById('play-icon'),
+range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
-playIcon = document.getElementById('play-icon'),
 toggleRangeFocus = () => {
     if(document.activeElement === range && range.classList.contains('range-focus') === false) {
         range.classList.add('range-focus');
