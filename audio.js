@@ -39,7 +39,6 @@ playAnimation.goToAndStop(14, true);
 let play = true;
 
 playIcon.addEventListener('click', () => {
-    togglePlayFocus();
     if (play) {
         playAnimation.playSegments([14, 28], true);
         play = false;
@@ -53,6 +52,7 @@ playIcon.addEventListener('click', () => {
 
 playIcon.addEventListener('keyup', togglePlayFocus.add);
 playIcon.addEventListener('blur', togglePlayFocus.remove);
+playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
 range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
