@@ -32,11 +32,9 @@ toggleRangeFocus = {
         }
     }
 };
-
+let play = true;
 
 playAnimation.goToAndStop(14, true);
-
-let play = true;
 
 playIcon.addEventListener('click', () => {
     if (play) {
@@ -48,8 +46,6 @@ playIcon.addEventListener('click', () => {
         play = true;	
     }
 });
-
-
 playIcon.addEventListener('keyup', togglePlayFocus.add);
 playIcon.addEventListener('blur', togglePlayFocus.remove);
 playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
