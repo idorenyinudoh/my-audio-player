@@ -3,7 +3,7 @@ html {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: -0.5px;
 }
-#main-container {
+#audio-container {
     display: grid;
     grid-template-columns: 39px 3.5ch 1fr 3.5ch;
     grid-template-rows: 39px;
