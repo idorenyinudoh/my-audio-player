@@ -3,7 +3,7 @@ rangePops = document.querySelector('div#range-container'),
 playIcon = document.getElementById('play-icon');
 
 
-const animation = bodymovin.loadAnimation({
+const playAnimation = bodymovin.loadAnimation({
     container: playIcon,
     path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
     renderer: 'svg',
@@ -11,17 +11,17 @@ const animation = bodymovin.loadAnimation({
     autoplay: false,
     name: "play",
 });
-animation.goToAndStop(14, true);
+playAnimation.goToAndStop(14, true);
 
 let play = true;
 
 playIcon.addEventListener('click', () => {
     if (play) {
-        animation.playSegments([14, 28], true);
+        playAnimation.playSegments([14, 28], true);
         play = false;
     }
     else {
-        animation.playSegments([0, 14], true);
+        playAnimation.playSegments([0, 14], true);
         play = true;	
     }
 });
