@@ -1,6 +1,16 @@
 const range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
-playIcon = document.getElementById('play-icon');
+playIcon = document.getElementById('play-icon'),
+toggleRangeFocus = () => {
+    if(document.activeElement === range && range.classList.contains('range-focus') === false) {
+        range.classList.add('range-focus');
+        rangePops.classList.add('outline');
+    }
+    else {
+        range.classList.remove('range-focus');
+        rangePops.classList.remove('outline');
+    }
+};
 
 
 const playAnimation = bodymovin.loadAnimation({
@@ -40,24 +50,9 @@ playIcon.addEventListener('blur', () => {
         playIcon.classList.remove('play-focus');
     }
 });
-range.addEventListener('keyup', () => {
-    if(document.activeElement === range && range.classList.contains('range-focus') === false) {
-        range.classList.add('range-focus');
-        rangePops.classList.add('outline');
-    }
-});
-range.addEventListener('blur', () => {
-    if(range.classList.contains('range-focus')) {
-        range.classList.remove('range-focus');
-        rangePops.classList.remove('outline');
-    }
-});
-range.addEventListener('pointerdown', () => {
-    if(range.classList.contains('range-focus')) {
-        range.classList.remove('range-focus');
-        rangePops.classList.remove('outline');
-    }
-});
+range.addEventListener('keyup', toggleRangeFocus);
+range.addEventListener('blur', toggleRangeFocus);
+range.addEventListener('pointerdown', toggleRangeFocus);
 range.addEventListener('input', () => {
     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
 });
