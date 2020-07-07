@@ -1,4 +1,8 @@
+const range = document.getElementById('range-input'),
+rangePops = document.querySelector('div#range-container'),
 playIcon = document.getElementById('play-icon');
+
+
 const animation = bodymovin.loadAnimation({
     container: playIcon,
     path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
@@ -23,9 +27,6 @@ playIcon.addEventListener('click', () => {
 });
 
 
-
-const range = document.getElementById('range-input'),
-rangePops = document.querySelector('div#range-container');
 
 range.addEventListener('keyup', () => {
     if(document.activeElement === range && range.classList.contains('range-focus') === false) {
