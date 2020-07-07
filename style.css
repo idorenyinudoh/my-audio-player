@@ -17,6 +17,7 @@ html {
     background: inherit;
     width: 39px;
     height: 39px;
+    cursor: pointer;
 }
 #play-icon:focus {
     outline: 2px solid #003a77;
