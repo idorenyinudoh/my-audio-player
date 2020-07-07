@@ -13,14 +13,18 @@ togglePlayFocus = () => {
 },
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
-toggleRangeFocus = () => {
-    if(document.activeElement === range && range.classList.contains('range-focus') === false) {
-        range.classList.add('range-focus');
-        rangePops.classList.add('outline');
-    }
-    else {
-        range.classList.remove('range-focus');
-        rangePops.classList.remove('outline');
+toggleRangeFocus = {
+    add() {
+        if(document.activeElement === range && range.classList.contains('range-focus') === false) {
+            range.classList.add('range-focus');
+            rangePops.classList.add('outline');
+        }
+    },
+    remove() {
+        if(range.classList.contains('range-focus')) {
+            range.classList.remove('range-focus');
+            rangePops.classList.remove('outline');
+        }
     }
 };
 
@@ -44,9 +48,9 @@ playIcon.addEventListener('click', () => {
 
 playIcon.addEventListener('keyup', togglePlayFocus);
 playIcon.addEventListener('blur', togglePlayFocus);
-range.addEventListener('keyup', toggleRangeFocus);
-range.addEventListener('blur', toggleRangeFocus);
-range.addEventListener('pointerdown', toggleRangeFocus);
+range.addEventListener('keyup', toggleRangeFocus.add);
+range.addEventListener('blur', toggleRangeFocus.remove);
+range.addEventListener('pointerdown', toggleRangeFocus.remove);
 range.addEventListener('input', () => {
     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
 });
