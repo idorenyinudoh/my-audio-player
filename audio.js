@@ -6,6 +6,11 @@ playAnimation = bodymovin.loadAnimation({
     loop: false,
     autoplay: false
 }),
+togglePlayFocus = () => {
+    if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
+        playIcon.classList.add('play-focus');
+    } else playIcon.classList.remove('play-focus');
+},
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
 toggleRangeFocus = () => {
@@ -25,9 +30,7 @@ playAnimation.goToAndStop(14, true);
 let play = true;
 
 playIcon.addEventListener('click', () => {
-    if(playIcon.classList.contains('play-focus')) {
-        playIcon.classList.remove('play-focus');
-    }
+    togglePlayFocus();
     if (play) {
         playAnimation.playSegments([14, 28], true);
         play = false;
@@ -39,16 +42,8 @@ playIcon.addEventListener('click', () => {
 });
 
 
-playIcon.addEventListener('keyup', () => {
-    if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
-        playIcon.classList.add('play-focus');
-    }
-});
-playIcon.addEventListener('blur', () => {
-    if(playIcon.classList.contains('play-focus')) {
-        playIcon.classList.remove('play-focus');
-    }
-});
+playIcon.addEventListener('keyup', togglePlayFocus);
+playIcon.addEventListener('blur', togglePlayFocus);
 range.addEventListener('keyup', toggleRangeFocus);
 range.addEventListener('blur', toggleRangeFocus);
 range.addEventListener('pointerdown', toggleRangeFocus);
