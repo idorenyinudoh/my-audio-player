@@ -16,6 +16,9 @@ playAnimation.goToAndStop(14, true);
 let play = true;
 
 playIcon.addEventListener('click', () => {
+    if(playIcon.classList.contains('play-focus')) {
+        playIcon.classList.remove('play-focus');
+    }
     if (play) {
         playAnimation.playSegments([14, 28], true);
         play = false;
@@ -27,7 +30,16 @@ playIcon.addEventListener('click', () => {
 });
 
 
-
+playIcon.addEventListener('keyup', () => {
+    if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
+        playIcon.classList.add('play-focus');
+    }
+});
+playIcon.addEventListener('blur', () => {
+    if(playIcon.classList.contains('play-focus')) {
+        playIcon.classList.remove('play-focus');
+    }
+});
 range.addEventListener('keyup', () => {
     if(document.activeElement === range && range.classList.contains('range-focus') === false) {
         range.classList.add('range-focus');
