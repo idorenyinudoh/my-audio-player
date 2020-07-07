@@ -19,13 +19,16 @@ html {
     height: 39px;
     cursor: pointer;
 }
-#play-icon:focus {
+button:focus {
+    outline: 0;
+}
+.play-focus:focus {
     outline: 2px solid #003a77;
 }
 path {
     stroke: #2464a6;
 }
-#play-icon:focus path {
+.play-focus:focus path {
     stroke: #003a77;
 }
 .dur {
