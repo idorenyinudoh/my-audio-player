@@ -123,7 +123,6 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     background-color: #fff;
     cursor: pointer;
-    box-shadow: 0 0 2px 1px #808080b0;
 }
 input[type="range"]:active::-moz-range-thumb {
     background-color: #2464a6;
@@ -161,7 +160,6 @@ input[type="range"]::-ms-thumb {
     border-radius: 50%;
     background-color: #fff;
     cursor: pointer;
-    box-shadow: 0 0 2px 1px #808080;
 }
 input[type="range"]:active::-ms-thumb {
     background-color: #2464a6;
