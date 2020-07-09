@@ -40,10 +40,12 @@ playAnimation.goToAndStop(14, true);
 
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
+        audio.play();
         playAnimation.playSegments([14, 28], true);
         isShowingPlay = false;
     }
     else {
+        audio.pause();
         playAnimation.playSegments([0, 14], true);
         isShowingPlay = true;	
     }
