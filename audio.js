@@ -1,7 +1,7 @@
 const playIcon = document.getElementById('play-icon'),
 playAnimation = bodymovin.loadAnimation({
     container: playIcon,
-    path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+    path: 'data.json',
     renderer: 'svg',
     loop: false,
     autoplay: false
