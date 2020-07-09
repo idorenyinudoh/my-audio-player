@@ -32,7 +32,8 @@ toggleRangeFocus = {
             rangePops.classList.remove('outline');
         }
     }
-};
+},
+audio = document.querySelector('audio');
 let isShowingPlay = true;
 
 playAnimation.goToAndStop(14, true);
