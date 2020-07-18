@@ -61,6 +61,13 @@ SongDetails = {
     }
 },
 
+if(audio.readyState > 2) {
+    duration.textContent = SongDetails.duration();
+} else {
+    audio.addEventListener('canplay', () => {
+        duration.textContent = SongDetails.duration();
+    });
+}
 
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
