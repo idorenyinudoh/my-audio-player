@@ -10,6 +10,7 @@ const playIcon = document.getElementById('play-icon');
         loop: false,
         autoplay: false
     });
+    playAnimation.goToAndStop(14, true);
     console.log(2);
 })();
 const togglePlayFocus = {
@@ -41,7 +42,6 @@ toggleRangeFocus = {
 audio = document.querySelector('audio');
 let isShowingPlay = true;
 
-playAnimation.goToAndStop(14, true);
 
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
