@@ -1,13 +1,17 @@
-playAnimation = bodymovin.loadAnimation({
-    container: playIcon,
-    //path: 'data.json', //for production
-    path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
-    renderer: 'svg',
-    loop: false,
-    autoplay: false
-}),
 let playAnimation;
 const playIcon = document.getElementById('play-icon');
+(async () => {
+    await bodymovin.loadAnimation;
+    playAnimation = bodymovin.loadAnimation({
+        container: playIcon,
+        //path: 'data.json', //for production
+        path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+    });
+    console.log(2);
+})();
 const togglePlayFocus = {
     add() {
         if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
