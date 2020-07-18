@@ -42,6 +42,24 @@ toggleRangeFocus = {
 audio = document.querySelector('audio'),
 currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
+SongDetails = {
+    current() {
+        let currentMinutes = Math.floor(audio.currentTime / 60),
+        currentSeconds = () => {
+            let secs = Math.floor(audio.currentTime - currentMinutes * 60);
+            return secs < 10 ? `0${secs}` : secs;
+        };
+        return `${currentMinutes}:${currentSeconds()}`;
+    },
+    duration() {
+        let durationMinutes = Math.floor(audio.duration / 60),
+        durationSeconds = () => {
+            let secs = Math.floor(audio.duration - durationMinutes * 60);
+            return secs < 10 ? `0${secs}` : secs;
+        };
+        return `${durationMinutes}:${durationSeconds()}`;
+    }
+},
 
 
 playIcon.addEventListener('click', () => {
