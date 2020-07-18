@@ -39,7 +39,9 @@ toggleRangeFocus = {
         }
     }
 },
-audio = document.querySelector('audio');
+audio = document.querySelector('audio'),
+currentTime = document.querySelector('#current-time'),
+duration = document.querySelector('#duration'),
 
 
 playIcon.addEventListener('click', () => {
