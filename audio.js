@@ -1,4 +1,4 @@
-let playAnimation;
+let playAnimation, isShowingPlay = true;
 const playIcon = document.getElementById('play-icon');
 (async () => {
     await bodymovin.loadAnimation;
@@ -40,7 +40,6 @@ toggleRangeFocus = {
     }
 },
 audio = document.querySelector('audio');
-let isShowingPlay = true;
 
 
 playIcon.addEventListener('click', () => {
