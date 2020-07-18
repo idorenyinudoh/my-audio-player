@@ -60,6 +60,10 @@ SongDetails = {
         return `${durationMinutes}:${durationSeconds()}`;
     }
 },
+updateCurrentTime = () => {
+    currentTime.textContent = SongDetails.current();
+    requestAnimationFrame(updateCurrentTime);
+}
 
 if(audio.readyState > 2) {
     duration.textContent = SongDetails.duration();
@@ -68,6 +72,10 @@ if(audio.readyState > 2) {
         duration.textContent = SongDetails.duration();
     });
 }
+
+audio.addEventListener('play', () => {
+    requestAnimationFrame(updateCurrentTime);
+});
 
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
