@@ -6,6 +6,7 @@ playAnimation = bodymovin.loadAnimation({
     loop: false,
     autoplay: false
 }),
+let playAnimation;
 const playIcon = document.getElementById('play-icon');
 const togglePlayFocus = {
     add() {
