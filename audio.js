@@ -1,4 +1,3 @@
-const playIcon = document.getElementById('play-icon'),
 playAnimation = bodymovin.loadAnimation({
     container: playIcon,
     //path: 'data.json', //for production
@@ -7,7 +6,8 @@ playAnimation = bodymovin.loadAnimation({
     loop: false,
     autoplay: false
 }),
-togglePlayFocus = {
+const playIcon = document.getElementById('play-icon');
+const togglePlayFocus = {
     add() {
         if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
             playIcon.classList.add('play-focus');
