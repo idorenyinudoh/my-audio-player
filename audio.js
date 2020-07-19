@@ -65,6 +65,14 @@ updateCurrentTime = () => {
     requestAnimationFrame(updateCurrentTime);
 }
 
+if(audio.readyState > 0) {
+    range.setAttribute('max', `${Math.floor(audio.duration)}`);
+} else {
+    audio.addEventListener('loadedmetadata', () => {
+        range.setAttribute('max', `${Math.floor(audio.duration)}`);
+    });
+}
+
 if(audio.readyState > 2) {
     duration.textContent = SongDetails.duration();
 } else {
