@@ -62,6 +62,7 @@ SongDetails = {
 },
 updateCurrentTime = () => {
     currentTime.textContent = SongDetails.current();
+    range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
     requestAnimationFrame(updateCurrentTime);
 }
 
