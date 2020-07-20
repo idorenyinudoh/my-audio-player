@@ -123,3 +123,7 @@ range.addEventListener('input', () => {
 // window.addEventListener('load', () => {
 //     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
 // });
+
+setInterval(() => {
+    console.log(audio.networkState);
+}, 1000);
