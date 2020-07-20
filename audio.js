@@ -1,5 +1,6 @@
 let playAnimation, isShowingPlay = true;
 const playIcon = document.getElementById('play-icon');
+// load the play animation asynchronously
 (async () => {
     await bodymovin.loadAnimation;
     playAnimation = bodymovin.loadAnimation({
@@ -13,6 +14,7 @@ const playIcon = document.getElementById('play-icon');
     playAnimation.goToAndStop(14, true);
     console.log(2);
 })();
+// so the focus state only shows on keyboard application, and not mouse for the play icon
 const togglePlayFocus = {
     add() {
         if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
@@ -25,6 +27,7 @@ const togglePlayFocus = {
 },
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
+// so the focus state only shows on keyboard application, and not mouse for the range 
 toggleRangeFocus = {
     add() {
         if(document.activeElement === range && range.classList.contains('range-focus') === false) {
@@ -43,6 +46,7 @@ audio = document.querySelector('audio'),
 currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
 SongDetails = {
+    // current method for the current time of the audio player
     current() {
         let currentMinutes = Math.floor(audio.currentTime / 60),
         currentSeconds = () => {
@@ -51,6 +55,7 @@ SongDetails = {
         };
         return `${currentMinutes}:${currentSeconds()}`;
     },
+    // duration method for the duration time of the audio player
     duration() {
         let durationMinutes = Math.floor(audio.duration / 60),
         durationSeconds = () => {
@@ -60,12 +65,14 @@ SongDetails = {
         return `${durationMinutes}:${durationSeconds()}`;
     }
 },
+// rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
     currentTime.textContent = SongDetails.current();
     range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
     requestAnimationFrame(updateCurrentTime);
 }
 
+// set max attribute of range when the metadata of the audio has loaded
 if(audio.readyState > 0) {
     range.setAttribute('max', `${Math.floor(audio.duration)}`);
 } else {
@@ -74,6 +81,7 @@ if(audio.readyState > 0) {
     });
 }
 
+// show duration when the audio canplay 
 if(audio.readyState > 2) {
     duration.textContent = SongDetails.duration();
 } else {
@@ -82,10 +90,12 @@ if(audio.readyState > 2) {
     });
 }
 
+// rAF we defined earlier
 audio.addEventListener('play', () => {
     requestAnimationFrame(updateCurrentTime);
 });
 
+// control play and pause
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
         audio.play();
@@ -98,9 +108,11 @@ playIcon.addEventListener('click', () => {
         isShowingPlay = true;	
     }
 });
+// playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
 playIcon.addEventListener('blur', togglePlayFocus.remove);
 playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
+// rangeFocus we defined earlier
 range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
