@@ -116,9 +116,6 @@ playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
 range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
-range.addEventListener('input', () => {
-    document.querySelector('html').style.setProperty('--before-width', `${range.value}%`);
-});
 //Main purpose is for the webkit-range-progress to update when the range's value !== 0
 // window.addEventListener('load', () => {
 //     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
