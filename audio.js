@@ -69,7 +69,7 @@ SongDetails = {
 updateCurrentTime = () => {
     currentTime.textContent = SongDetails.current();
     range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
-    requestAnimationFrame(updateCurrentTime);
+    rAF = requestAnimationFrame(updateCurrentTime);
 }
 
 // set max attribute of range when the metadata of the audio has loaded
