@@ -90,11 +90,6 @@ if(audio.readyState > 2) {
     });
 }
 
-// rAF we defined earlier
-audio.addEventListener('play', () => {
-    requestAnimationFrame(updateCurrentTime);
-});
-
 // control play and pause
 playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
