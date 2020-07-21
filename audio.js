@@ -74,10 +74,10 @@ updateCurrentTime = () => {
 
 // set max attribute of range when the metadata of the audio has loaded
 if(audio.readyState > 0) {
-    range.setAttribute('max', `${Math.floor(audio.duration)}`);
+    range.max = Math.floor(audio.duration);
 } else {
     audio.addEventListener('loadedmetadata', () => {
-        range.setAttribute('max', `${Math.floor(audio.duration)}`);
+        range.max = Math.floor(audio.duration);
     });
 }
 
