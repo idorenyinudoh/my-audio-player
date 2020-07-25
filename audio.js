@@ -1,4 +1,4 @@
-let playAnimation, isShowingPlay = true, rAF;
+let playAnimation, isShowingPlay = true, rAF, isPlayingRaf = false;
 const playIcon = document.getElementById('play-icon');
 // load the play animation asynchronously
 (async () => {
