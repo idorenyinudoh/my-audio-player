@@ -72,7 +72,7 @@ updateCurrentTime = () => {
     range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
-}
+};
 
 // set max attribute of range when the metadata of the audio has loaded
 if(audio.readyState > 0) {
