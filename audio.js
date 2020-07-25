@@ -70,6 +70,7 @@ SongDetails = {
 updateCurrentTime = () => {
     currentTime.textContent = SongDetails.current();
     range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
+    root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
 }
 
@@ -114,6 +115,9 @@ playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
 range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
+range.addEventListener('input', () => {
+    root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+});
 //Main purpose is for the webkit-range-progress to update when the range's value !== 0
 // window.addEventListener('load', () => {
 //     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
