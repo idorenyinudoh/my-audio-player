@@ -25,6 +25,7 @@ const togglePlayFocus = {
         if(playIcon.classList.contains('play-focus')) playIcon.classList.remove('play-focus');
     }
 },
+root = document.querySelector('html'),
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
 // so the focus state only shows on keyboard application, and not mouse for the range 
