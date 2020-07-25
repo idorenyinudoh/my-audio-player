@@ -104,7 +104,10 @@ playIcon.addEventListener('click', () => {
     else {
         audio.pause();
         playAnimation.playSegments([0, 14], true);
-        cancelAnimationFrame(rAF);
+        if (isPlayingRaf) {
+            cancelAnimationFrame(rAF);
+            isPlayingRaf = false;
+        }
         isShowingPlay = true;	
     }
 });
@@ -117,6 +120,10 @@ range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
 range.addEventListener('input', () => {
+    if (isPlayingRaf) {
+        cancelAnimationFrame(rAF);
+        isPlayingRaf = false;
+    }
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
 });
 //Main purpose is for the webkit-range-progress to update when the range's value !== 0
