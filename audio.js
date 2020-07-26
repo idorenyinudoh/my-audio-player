@@ -98,8 +98,10 @@ playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
         audio.play();
         playAnimation.playSegments([14, 28], true);
-        requestAnimationFrame(updateCurrentTime);
-        isPlayingRaf = true;
+        if (!isPlayingRaf) {
+            requestAnimationFrame(updateCurrentTime);
+            isPlayingRaf = true;
+        }
         isShowingPlay = false;
     }
     else {
