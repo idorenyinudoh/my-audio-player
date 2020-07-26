@@ -49,12 +49,13 @@ duration = document.querySelector('#duration'),
 SongDetails = {
     // current method for the current time of the audio player
     current() {
-        let currentMinutes = Math.floor(audio.currentTime / 60),
-        currentSeconds = () => {
-            let secs = Math.floor(audio.currentTime - currentMinutes * 60);
-            return secs < 10 ? `0${secs}` : secs;
-        };
-        return `${currentMinutes}:${currentSeconds()}`;
+        let val = range.value;
+        let min = Math.floor(val / 60);
+        let secsCalc = () => {
+            let secs = val % 60;
+            return secs < 10 ? `0${secs}` : `${secs}`;
+        }
+        return `${min}:${secsCalc()}`;
     },
     // duration method for the duration time of the audio player
     duration() {
