@@ -130,6 +130,13 @@ range.addEventListener('input', () => {
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     currentTime.textContent = RangeDetails.current();
 });
+range.addEventListener('change', () => {
+    audio.currentTime = range.value;
+    if (!isShowingPlay && !isPlayingRaf) {
+        requestAnimationFrame(updateCurrentTime);
+        isPlayingRaf = true;
+    }
+});
 //Main purpose is for the webkit-range-progress to update when the range's value !== 0
 // window.addEventListener('load', () => {
 //     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
