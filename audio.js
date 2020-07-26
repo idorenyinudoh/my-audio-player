@@ -46,7 +46,7 @@ toggleRangeFocus = {
 audio = document.querySelector('audio'),
 currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
-SongDetails = {
+RangeDetails = {
     // current method for the current time of the audio player
     current() {
         let val = range.value;
@@ -69,7 +69,7 @@ SongDetails = {
 },
 // rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
-    currentTime.textContent = SongDetails.current();
+    currentTime.textContent = RangeDetails.current();
     range.value = (Math.floor(audio.currentTime) / Math.floor(audio.duration)) * Math.floor(audio.duration);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
@@ -86,10 +86,10 @@ if(audio.readyState > 0) {
 
 // show duration when the audio canplay 
 if(audio.readyState > 2) {
-    duration.textContent = SongDetails.duration();
+    duration.textContent = RangeDetails.duration();
 } else {
     audio.addEventListener('canplay', () => {
-        duration.textContent = SongDetails.duration();
+        duration.textContent = RangeDetails.duration();
     });
 }
 
