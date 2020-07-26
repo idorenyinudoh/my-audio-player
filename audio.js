@@ -126,6 +126,7 @@ range.addEventListener('input', () => {
         isPlayingRaf = false;
     }
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+    currentTime.textContent = RangeDetails.current();
 });
 //Main purpose is for the webkit-range-progress to update when the range's value !== 0
 // window.addEventListener('load', () => {
