@@ -114,6 +114,13 @@ playIcon.addEventListener('click', () => {
         isShowingPlay = true;	
     }
 });
+
+audio.addEventListener('progress', () => {
+    if (audio.duration > 0) {
+        root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1))}%`);
+    }
+});
+
 // playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
 playIcon.addEventListener('blur', togglePlayFocus.remove);
