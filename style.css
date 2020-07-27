@@ -141,8 +141,9 @@ input[type="range"]::-ms-fill-lower {
     background-color: #003a77;
 }
 input[type="range"]::-ms-fill-upper {
-    background-color: #2464a6;
-    opacity: 0.5;
+    /* background-color: #2464a6;
+    opacity: 0.5; */
+    background: linear-gradient(to right, rgba(36, 100, 166, 0.7) var(--buffered-width), rgba(95, 145, 216, 0.5) var(--buffered-width));
 }
 .range-focus:focus::-ms-fill-upper {
     background-color: #003a77;
