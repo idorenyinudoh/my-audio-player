@@ -98,20 +98,26 @@ playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
         audio.play();
         playAnimation.playSegments([14, 28], true);
-        if (!isPlayingRaf) {
-            requestAnimationFrame(updateCurrentTime);
-            isPlayingRaf = true;
-        }
         isShowingPlay = false;
     }
     else {
         audio.pause();
         playAnimation.playSegments([0, 14], true);
-        if (isPlayingRaf) {
-            cancelAnimationFrame(rAF);
-            isPlayingRaf = false;
-        }
         isShowingPlay = true;	
+    }
+});
+
+audio.addEventListener('play', () => {
+    if (!isPlayingRaf) {
+        requestAnimationFrame(updateCurrentTime);
+        isPlayingRaf = true;
+    }
+});
+
+audio.addEventListener('pause', () => {
+    if (isPlayingRaf) {
+        cancelAnimationFrame(rAF);
+        isPlayingRaf = false;
     }
 });
 
