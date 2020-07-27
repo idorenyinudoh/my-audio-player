@@ -69,8 +69,8 @@ RangeDetails = {
 },
 // rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
-    currentTime.textContent = RangeDetails.current();
     range.value = Math.floor(audio.currentTime);
+    currentTime.textContent = RangeDetails.current();
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
 };
