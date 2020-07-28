@@ -55,7 +55,7 @@ controlRaf = {
         requestAnimationFrame(updateCurrentTime);
         this.isPlayingRaf = true;
     },
-    pause() {
+    stop() {
         cancelAnimationFrame(rAF);
         this.isPlayingRaf = false;
     }
@@ -100,7 +100,7 @@ playIcon.addEventListener('click', () => {
         audio.pause();
         playAnimation.playSegments([0, 14], true);
         playIcon.setAttribute('aria-label', 'play');
-        controlRaf.pause();
+        controlRaf.stop();
         isShowingPlay = true;	
     }
 });
@@ -119,7 +119,7 @@ range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
 range.addEventListener('input', () => {
-    controlRaf.pause();
+    controlRaf.stop();
     inputEvent();
 });
 range.addEventListener('change', () => {
