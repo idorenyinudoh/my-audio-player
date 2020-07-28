@@ -123,7 +123,7 @@ range.addEventListener('input', () => {
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
-    if (!isShowingPlay && !isPlayingRaf) {
+    if (!isShowingPlay) {
         requestAnimationFrame(updateCurrentTime);
         isPlayingRaf = true;
     }
