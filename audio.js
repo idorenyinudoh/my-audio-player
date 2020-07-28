@@ -48,6 +48,7 @@ updateCurrentTime = () => {
     inputEvent();
     rAF = requestAnimationFrame(updateCurrentTime);
 },
+// object with methods for playing and stopping rAF
 controlRaf = {
     isPlayingRaf: false,
     play() {
