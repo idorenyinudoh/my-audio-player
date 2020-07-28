@@ -137,7 +137,3 @@ range.addEventListener('change', () => {
         isPlayingRaf = true;
     }
 });
-//Main purpose is for the webkit-range-progress to update when the range's value !== 0
-// window.addEventListener('load', () => {
-//     document.querySelector('html').style.setProperty('--before-width', `${(range.value)/2}vw`);
-// });
