@@ -1,4 +1,4 @@
-let playAnimation, isShowingPlay = true, rAF;
+let playAnimation, rAF;
 const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
@@ -69,6 +69,24 @@ controlRaf = {
         cancelAnimationFrame(rAF);
         this.isPlayingRaf = false;
     }
+},
+// function to control playback
+controlPlayback = () => {
+    let isShowingPlay = true;
+    if(isShowingPlay) {
+        audio.play();
+        playAnimation.playSegments([14, 28], true);
+        playIcon.setAttribute('aria-label', 'pause');
+        controlRaf.play();
+        isShowingPlay = false;
+    }
+    else {
+        audio.pause();
+        playAnimation.playSegments([0, 14], true);
+        playIcon.setAttribute('aria-label', 'play');
+        controlRaf.stop();
+        isShowingPlay = true;	
+    }
 };
 // load the play animation asynchronously
 (async () => {
@@ -87,23 +105,8 @@ controlRaf = {
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', metadata.main);
 
-// control play and pause
-playIcon.addEventListener('click', () => {
-    if (isShowingPlay) {
-        audio.play();
-        playAnimation.playSegments([14, 28], true);
-        playIcon.setAttribute('aria-label', 'pause');
-        controlRaf.play();
-        isShowingPlay = false;
-    }
-    else {
-        audio.pause();
-        playAnimation.playSegments([0, 14], true);
-        playIcon.setAttribute('aria-label', 'play');
-        controlRaf.stop();
-        isShowingPlay = true;	
-    }
-});
+// control playbackkkkkkkk
+playIcon.addEventListener('click', controlPlayback);
 
 // show buffered data on audio load
 audio.addEventListener('progress', metadata.forProgress);
