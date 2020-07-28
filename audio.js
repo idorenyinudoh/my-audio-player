@@ -59,12 +59,13 @@ RangeDetails = {
     },
     // duration method for the duration time of the audio player
     duration() {
-        let durationMinutes = Math.floor(audio.duration / 60),
-        durationSeconds = () => {
-            let secs = Math.floor(audio.duration - durationMinutes * 60);
+        let val = range.max;
+        let min = Math.floor(val / 60);
+        let secsCalc = () => {
+            let secs = val % 60;
             return secs < 10 ? `0${secs}` : secs;
         };
-        return `${durationMinutes}:${durationSeconds()}`;
+        return `${min}:${secsCalc()}`;
     }
 },
 // rAF for updating the current time and range value of the audio player
