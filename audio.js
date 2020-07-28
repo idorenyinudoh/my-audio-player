@@ -93,20 +93,14 @@ playIcon.addEventListener('click', () => {
         audio.play();
         playAnimation.playSegments([14, 28], true);
         playIcon.setAttribute('aria-label', 'pause');
-        if (!isPlayingRaf) {
-            requestAnimationFrame(updateCurrentTime);
-            isPlayingRaf = true;
-        }
+        controlRaf.play();
         isShowingPlay = false;
     }
     else {
         audio.pause();
         playAnimation.playSegments([0, 14], true);
         playIcon.setAttribute('aria-label', 'play');
-        if (isPlayingRaf) {
-            cancelAnimationFrame(rAF);
-            isPlayingRaf = false;
-        }
+        controlRaf.pause();
         isShowingPlay = true;	
     }
 });
@@ -125,17 +119,11 @@ range.addEventListener('keyup', toggleRangeFocus.add);
 range.addEventListener('blur', toggleRangeFocus.remove);
 range.addEventListener('pointerdown', toggleRangeFocus.remove);
 range.addEventListener('input', () => {
-    if (isPlayingRaf) {
-        cancelAnimationFrame(rAF);
-        isPlayingRaf = false;
-    }
+    controlRaf.pause();
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     currentTime.textContent = time(range.value);
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
-    if (!isShowingPlay) {
-        requestAnimationFrame(updateCurrentTime);
-        isPlayingRaf = true;
-    }
+    if (!isShowingPlay) controlRaf.play();
 });
