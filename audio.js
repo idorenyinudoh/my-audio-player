@@ -46,21 +46,19 @@ toggleRangeFocus = {
 audio = document.querySelector('audio'),
 currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
-RangeDetails = {
-    // method for the whatever time of the audio player
-    time(val) {
-        let min = Math.floor(val / 60);
-        let secsCalc = () => {
-            let secs = val % 60;
-            return secs < 10 ? `0${secs}` : `${secs}`;
-        }
-        return `${min}:${secsCalc()}`;
+// function for the whatever time of the audio player
+time = (val) => {
+    let min = Math.floor(val / 60);
+    let secsCalc = () => {
+        let secs = val % 60;
+        return secs < 10 ? `0${secs}` : `${secs}`;
     }
+    return `${min}:${secsCalc()}`;
 },
 // rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
     range.value = Math.floor(audio.currentTime);
-    currentTime.textContent = RangeDetails.time(range.value);
+    currentTime.textContent = time(range.value);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
 };
@@ -68,12 +66,12 @@ updateCurrentTime = () => {
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) {
     range.max = Math.floor(audio.duration);
-    duration.textContent = RangeDetails.time(range.max);
+    duration.textContent = time(range.max);
     root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
 } else {
     audio.addEventListener('loadedmetadata', () => {
         range.max = Math.floor(audio.duration);
-        duration.textContent = RangeDetails.time(range.max);
+        duration.textContent = time(range.max);
         root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
     });
 }
@@ -119,7 +117,7 @@ range.addEventListener('input', () => {
         isPlayingRaf = false;
     }
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
-    currentTime.textContent = RangeDetails.time(range.value);
+    currentTime.textContent = time(range.value);
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
