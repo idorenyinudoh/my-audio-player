@@ -4,7 +4,6 @@ root = document.querySelector('html'),
 range = document.getElementById('range-input'),
 rangePops = document.querySelector('div#range-container'),
 audio = document.querySelector('audio'),
-currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
 // so the focus state only shows on keyboard application, and not mouse for the play icon
 togglePlayFocus = {
@@ -43,6 +42,7 @@ time = (val) => {
 },
 // function to be called on range input (and when the rAF is running)
 inputEvent = () => {
+    const currentTime = document.querySelector('#current-time');
     currentTime.textContent = time(range.value);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
 },
