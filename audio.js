@@ -2,7 +2,6 @@ let playAnimation, isShowingPlay = true, rAF;
 const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
-rangePops = document.querySelector('div#range-container'),
 audio = document.querySelector('audio'),
 duration = document.querySelector('#duration'),
 // so the focus state only shows on keyboard application, and not mouse for the play icon
@@ -21,13 +20,13 @@ toggleRangeFocus = {
     add() {
         if(document.activeElement === range && range.classList.contains('range-focus') === false) {
             range.classList.add('range-focus');
-            rangePops.classList.add('outline');
+            document.querySelector('div#range-container').classList.add('outline');
         }
     },
     remove() {
         if(range.classList.contains('range-focus')) {
             range.classList.remove('range-focus');
-            rangePops.classList.remove('outline');
+            document.querySelector('div#range-container').classList.remove('outline');
         }
     }
 },
