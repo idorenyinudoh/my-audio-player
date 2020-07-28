@@ -71,7 +71,6 @@ controlRaf = {
         autoplay: false
     });
     playAnimation.goToAndStop(14, true);
-    console.log(2);
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
