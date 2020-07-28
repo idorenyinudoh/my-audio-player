@@ -41,6 +41,11 @@ time = (val) => {
     }
     return `${min}:${secsCalc()}`;
 },
+// function to be called on range input (and when the rAF is running)
+inputEvent = () => {
+    currentTime.textContent = time(range.value);
+    root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+},
 // rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
     range.value = Math.floor(audio.currentTime);
