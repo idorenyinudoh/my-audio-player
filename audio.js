@@ -3,7 +3,6 @@ const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
 audio = document.querySelector('audio'),
-duration = document.querySelector('#duration'),
 // so the focus state only shows on keyboard application, and not mouse for the play icon
 togglePlayFocus = {
     add() {
@@ -36,6 +35,17 @@ time = (val) => {
         return secs < 10 ? `0${secs}` : `${secs}`;
     }
     return `${min}:${secsCalc()}`;
+},
+// function to set max attribute of range, show duration, and show buffered data on metadata load
+metadata = {
+    forProgress() {
+        root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+    },
+    main() {
+        range.max = Math.floor(audio.duration);
+        document.querySelector('#duration').textContent = time(range.max);
+        this.forProgress();
+    }
 },
 // function to be called on range input (and when the rAF is running)
 inputEvent = () => {
@@ -75,17 +85,7 @@ controlRaf = {
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
-if(audio.readyState > 0) {
-    range.max = Math.floor(audio.duration);
-    duration.textContent = time(range.max);
-    root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
-} else {
-    audio.addEventListener('loadedmetadata', () => {
-        range.max = Math.floor(audio.duration);
-        duration.textContent = time(range.max);
-        root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
-    });
-}
+if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', metadata.main);
 
 // control play and pause
 playIcon.addEventListener('click', () => {
@@ -106,9 +106,7 @@ playIcon.addEventListener('click', () => {
 });
 
 // show buffered data on audio load
-audio.addEventListener('progress', () => {
-    root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
-});
+audio.addEventListener('progress', metadata.forProgress);
 
 // playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
