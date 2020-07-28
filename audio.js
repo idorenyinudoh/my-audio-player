@@ -78,13 +78,13 @@ updateCurrentTime = () => {
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) {
-    duration.textContent = RangeDetails.duration();
     range.max = Math.floor(audio.duration);
+    duration.textContent = RangeDetails.duration();
     root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
 } else {
     audio.addEventListener('loadedmetadata', () => {
-        duration.textContent = RangeDetails.duration();
         range.max = Math.floor(audio.duration);
+        duration.textContent = RangeDetails.duration();
         root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
     });
 }
