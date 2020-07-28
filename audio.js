@@ -47,24 +47,13 @@ audio = document.querySelector('audio'),
 currentTime = document.querySelector('#current-time'),
 duration = document.querySelector('#duration'),
 RangeDetails = {
-    // current method for the current time of the audio player
-    current() {
-        let val = range.value;
+    // method for the whatever time of the audio player
+    time(val) {
         let min = Math.floor(val / 60);
         let secsCalc = () => {
             let secs = val % 60;
             return secs < 10 ? `0${secs}` : `${secs}`;
         }
-        return `${min}:${secsCalc()}`;
-    },
-    // duration method for the duration time of the audio player
-    duration() {
-        let val = range.max;
-        let min = Math.floor(val / 60);
-        let secsCalc = () => {
-            let secs = val % 60;
-            return secs < 10 ? `0${secs}` : secs;
-        };
         return `${min}:${secsCalc()}`;
     }
 },
