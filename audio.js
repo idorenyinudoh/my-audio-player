@@ -122,5 +122,5 @@ range.addEventListener('input', () => {
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
-    if (!isShowingPlay) controlRaf.play();
+    if (!audio.paused) controlRaf.play();
 });
