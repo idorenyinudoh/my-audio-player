@@ -39,8 +39,7 @@ time = (val) => {
 },
 // function to be called on range input (and when the rAF is running)
 inputEvent = () => {
-    const currentTime = document.querySelector('#current-time');
-    currentTime.textContent = time(range.value);
+    document.querySelector('#current-time').textContent = time(range.value);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
 },
 // rAF for updating the current time and range value of the audio player
