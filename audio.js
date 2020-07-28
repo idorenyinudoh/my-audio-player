@@ -75,7 +75,7 @@ updateCurrentTime = () => {
     rAF = requestAnimationFrame(updateCurrentTime);
 };
 
-// set max attribute of range when the metadata of the audio has loaded
+// set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) {
     duration.textContent = RangeDetails.duration();
     range.max = Math.floor(audio.duration);
@@ -110,6 +110,7 @@ playIcon.addEventListener('click', () => {
     }
 });
 
+// show buffered data on audio load
 audio.addEventListener('progress', () => {
     root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
 });
