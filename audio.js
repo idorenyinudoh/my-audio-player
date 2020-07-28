@@ -77,21 +77,14 @@ updateCurrentTime = () => {
 
 // set max attribute of range when the metadata of the audio has loaded
 if(audio.readyState > 0) {
+    duration.textContent = RangeDetails.duration();
     range.max = Math.floor(audio.duration);
     root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
 } else {
     audio.addEventListener('loadedmetadata', () => {
+        duration.textContent = RangeDetails.duration();
         range.max = Math.floor(audio.duration);
         root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
-    });
-}
-
-// show duration when the audio canplay 
-if(audio.readyState > 2) {
-    duration.textContent = RangeDetails.duration();
-} else {
-    audio.addEventListener('canplay', () => {
-        duration.textContent = RangeDetails.duration();
     });
 }
 
