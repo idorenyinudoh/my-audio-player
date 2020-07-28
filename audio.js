@@ -1,4 +1,4 @@
-let playAnimation, isShowingPlay = true, rAF, isPlayingRaf = false;
+let playAnimation, isShowingPlay = true, rAF;
 const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
@@ -47,6 +47,17 @@ updateCurrentTime = () => {
     currentTime.textContent = time(range.value);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
+},
+controlRaf = {
+    isPlayingRaf: false,
+    play() {
+        requestAnimationFrame(updateCurrentTime);
+        this.isPlayingRaf = true;
+    },
+    pause() {
+        cancelAnimationFrame(rAF);
+        this.isPlayingRaf = false;
+    }
 };
 // load the play animation asynchronously
 (async () => {
