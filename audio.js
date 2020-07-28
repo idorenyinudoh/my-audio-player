@@ -7,9 +7,7 @@ duration = document.querySelector('#duration'),
 // so the focus state only shows on keyboard application, and not mouse for the play icon
 togglePlayFocus = {
     add() {
-        if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) {
-            playIcon.classList.add('play-focus');
-        }
+        if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) playIcon.classList.add('play-focus');
     },
     remove() {
         if(playIcon.classList.contains('play-focus')) playIcon.classList.remove('play-focus');
