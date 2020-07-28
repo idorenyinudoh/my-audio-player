@@ -81,6 +81,7 @@ playIcon.addEventListener('click', () => {
     if (isShowingPlay) {
         audio.play();
         playAnimation.playSegments([14, 28], true);
+        playIcon.setAttribute('aria-label', 'pause');
         if (!isPlayingRaf) {
             requestAnimationFrame(updateCurrentTime);
             isPlayingRaf = true;
@@ -90,6 +91,7 @@ playIcon.addEventListener('click', () => {
     else {
         audio.pause();
         playAnimation.playSegments([0, 14], true);
+        playIcon.setAttribute('aria-label', 'play');
         if (isPlayingRaf) {
             cancelAnimationFrame(rAF);
             isPlayingRaf = false;
