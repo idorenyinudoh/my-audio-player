@@ -118,9 +118,7 @@ playIcon.addEventListener('click', () => {
 });
 
 audio.addEventListener('progress', () => {
-    if (audio.duration > 0) {
-        root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
-    }
+    root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
 });
 
 // playFocus we defined earlier
