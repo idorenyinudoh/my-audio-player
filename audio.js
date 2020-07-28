@@ -60,7 +60,7 @@ RangeDetails = {
 // rAF for updating the current time and range value of the audio player
 updateCurrentTime = () => {
     range.value = Math.floor(audio.currentTime);
-    currentTime.textContent = RangeDetails.current();
+    currentTime.textContent = RangeDetails.time(range.value);
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     rAF = requestAnimationFrame(updateCurrentTime);
 };
@@ -119,7 +119,7 @@ range.addEventListener('input', () => {
         isPlayingRaf = false;
     }
     root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
-    currentTime.textContent = RangeDetails.current();
+    currentTime.textContent = RangeDetails.time(range.value);
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
