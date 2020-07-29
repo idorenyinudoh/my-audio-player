@@ -93,8 +93,8 @@ controlPlayback = () => {
     await bodymovin.loadAnimation;
     playAnimation = bodymovin.loadAnimation({
         container: playIcon,
-        path: 'data.json', //for production
-        // path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+        // path: 'data.json', //for production
+        path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
         renderer: 'svg',
         loop: false,
         autoplay: false
@@ -103,7 +103,7 @@ controlPlayback = () => {
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
-if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', metadata.main);
+if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
 
 // control playbackkkkkkkk
 playIcon.addEventListener('click', controlPlayback);
