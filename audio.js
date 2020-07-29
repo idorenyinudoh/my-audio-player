@@ -71,21 +71,22 @@ controlRaf = {
     }
 },
 // function to control playback
-controlPlayback = () => {
-    let isShowingPlay = true;
-    if(isShowingPlay) {
-        audio.play();
-        playAnimation.playSegments([14, 28], true);
-        playIcon.setAttribute('aria-label', 'pause');
-        controlRaf.play();
-        isShowingPlay = false;
-    }
-    else {
-        audio.pause();
-        playAnimation.playSegments([0, 14], true);
-        playIcon.setAttribute('aria-label', 'play');
-        controlRaf.stop();
-        isShowingPlay = true;	
+controlPlayback = {
+    isShowingPlay: true,
+    playBack() {
+        if(this.isShowingPlay) {
+            audio.play();
+            playAnimation.playSegments([14, 28], true);
+            playIcon.setAttribute('aria-label', 'pause');
+            controlRaf.play();
+            this.isShowingPlay = false;
+        } else {
+            audio.pause();
+            playAnimation.playSegments([0, 14], true);
+            playIcon.setAttribute('aria-label', 'play');
+            controlRaf.stop();
+            this.isShowingPlay = true;
+        }
     }
 };
 // load the play animation asynchronously
@@ -106,7 +107,7 @@ controlPlayback = () => {
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
 
 // control playbackkkkkkkk
-playIcon.addEventListener('click', controlPlayback);
+playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 
 // show buffered data on audio load
 audio.addEventListener('progress', metadata.forProgress);
