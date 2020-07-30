@@ -123,7 +123,6 @@ range.addEventListener('pointerdown', toggleRangeFocus.remove);
 range.addEventListener('input', () => {
     controlRaf.stop();
     inputEvent();
-    metadata.forProgress();
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
