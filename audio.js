@@ -41,6 +41,18 @@ metadata = {
     forProgress() {
         if(audio.duration > 0)root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
     },
+    forSeeked() {
+        if(audio.duration > 0) {
+            for(let i = 0; i < audio.seekable.length; i++) {
+                console.log(audio.seekable.start(audio.seekable.length - 1 - i));
+                console.log(audio.seekable.end(audio.seekable.length - 1 - i));
+               if(audio.seekable.start(audio.seekable.length - 1 - i) < audio.currentTime) {
+                    root.style.setProperty('--buffered-width', `${audio.seekable.end(audio.seekable.length - 1 - i) / range.max * 100}%`);
+                    break;
+               }
+            }
+        }
+    },
     main() {
         range.max = Math.floor(audio.duration);
         document.querySelector('#duration').textContent = time(range.max);
@@ -113,7 +125,7 @@ playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 audio.addEventListener('progress', metadata.forProgress);
 
 // show seeked data on audio seek
-// audio.addEventListener('seeked', metadata.forProgress);
+audio.addEventListener('seeked', metadata.forSeeked);
 
 // playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
