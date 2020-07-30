@@ -112,6 +112,9 @@ playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 // show buffered data on audio load
 audio.addEventListener('progress', metadata.forProgress);
 
+// show seeked data on audio seek
+audio.addEventListener('seeked', metadata.forProgress);
+
 // playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
 playIcon.addEventListener('blur', togglePlayFocus.remove);
