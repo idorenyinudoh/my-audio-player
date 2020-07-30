@@ -113,12 +113,7 @@ playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 audio.addEventListener('progress', metadata.forProgress);
 
 // show seeked data on audio seek
-audio.addEventListener('seeked', () => {
-    console.log(Math.floor(audio.seekable.end(audio.seekable.length - 1)));
-    root.style.setProperty('--buffered-width', '0%');
-    metadata.forProgress();
-    console.log('omo');
-});
+// audio.addEventListener('seeked', metadata.forProgress);
 
 // playFocus we defined earlier
 playIcon.addEventListener('keyup', togglePlayFocus.add);
