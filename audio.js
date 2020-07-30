@@ -91,11 +91,11 @@ controlPlayback = {
 },
 forSeeked = () => {
     if(audio.duration > 0) {
-        for(let i = 0; i < audio.seekable.length; i++) {
-            console.log(audio.seekable.start(audio.seekable.length - 1 - i));
-            console.log(audio.seekable.end(audio.seekable.length - 1 - i));
-           if(audio.seekable.start(audio.seekable.length - 1 - i) < audio.currentTime) {
-                root.style.setProperty('--buffered-width', `${audio.seekable.end(audio.seekable.length - 1 - i) / range.max * 100}%`);
+        for(let i = 0; i < audio.buffered.length; i++) {
+            console.log(audio.buffered.start(audio.buffered.length - 1 - i));
+            console.log(audio.buffered.end(audio.buffered.length - 1 - i));
+           if(audio.buffered.start(audio.buffered.length - 1 - i) < audio.currentTime) {
+                root.style.setProperty('--buffered-width', `${audio.buffered.end(audio.buffered.length - 1 - i) / range.max * 100}%`);
            }
         }
     }
