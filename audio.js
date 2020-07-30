@@ -39,7 +39,7 @@ time = (val) => {
 // function to set max attribute of range, show duration, and show buffered data on metadata load
 metadata = {
     forProgress() {
-        root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+        if(audio.duration > 0) root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
     },
     main() {
         range.max = Math.floor(audio.duration);
