@@ -107,13 +107,15 @@ controlPlayback = {
     let response = await fetch(`${audio.src}`, {
         method: 'GET',
         headers: {
-            'Range': 'bytes=0-2000000'
+            'Range': 'bytes=0-1000000,-1000000'
         }
     });
+    return response;
+})().then(() => {
     if(response.ok) {
         console.log(audio.duration);
     }
-})();
+});
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
