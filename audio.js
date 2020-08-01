@@ -107,7 +107,9 @@ controlPlayback = {
     await fetch(`${audio.src}`, {
         method: 'GET',
         headers: {
-            'Accept':'audio/mpeg'
+            'Connection':'keep-alive',
+            'Accept':'audio/mpeg',
+            'Range':'bytes=0-499999'
         }
     });
 })();
