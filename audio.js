@@ -104,15 +104,17 @@ controlPlayback = {
 })();
 
 (async () => {
-    await fetch(`${audio.src}`, {
+    let response = await fetch(`${audio.src}`, {
         method: 'GET',
         headers: {
             'Range': 'bytes=0-499999'
         }
     });
 
-    console.log('fetched 1');
-    console.log(audio.duration);
+    if(response.ok) {
+        console.log('fetched 1');
+        console.log(audio.duration);
+    }
 
     // if(!(audio.duration > 0)) {
     //     await fetch(`${audio.src}`, {
