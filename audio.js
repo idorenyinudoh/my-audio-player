@@ -109,7 +109,6 @@ controlPlayback = {
         headers: {
             'Connection':'keep-alive',
             'Accept':'audio/mpeg',
-            'Range':'bytes=0-499999'
         }
     });
 })();
