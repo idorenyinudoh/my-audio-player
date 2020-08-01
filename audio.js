@@ -103,6 +103,17 @@ controlPlayback = {
     playAnimation.goToAndStop(14, true);
 })();
 
+(async () => {
+    await fetch(`${audio.src}`, {
+        method: 'GET',
+        headers: {
+            'Range': 'bytes=0-499999'
+        }
+    });
+
+    console.log('fetched!');
+})();
+
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
 
