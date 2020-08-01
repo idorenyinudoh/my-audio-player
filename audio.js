@@ -103,15 +103,15 @@ controlPlayback = {
     playAnimation.goToAndStop(14, true);
 })();
 
-(async () => {
-    await fetch(`${audio.src}`, {
-        method: 'GET',
-        headers: {
-            'Connection':'keep-alive',
-            'Accept':'audio/mpeg',
-        }
-    });
-})();
+// (async () => {
+//     await fetch(`${audio.src}`, {
+//         method: 'GET',
+//         headers: {
+//             'Connection':'keep-alive',
+//             'Accept':'audio/mpeg',
+//         }
+//     });
+// })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
