@@ -111,8 +111,32 @@ controlPlayback = {
         }
     });
 
-    console.log('fetched!');
+    console.log('fetched 1');
     console.log(audio.duration);
+
+    if(!(audio.duration > 0)) {
+        await fetch(`${audio.src}`, {
+            method: 'GET',
+            headers: {
+                'Range': 'bytes=500000-1000000'
+            }
+        });
+
+        console.log('fetched 2');
+        console.log(audio.duration);
+    }
+
+    if(!(audio.duration > 0)) {
+        await fetch(`${audio.src}`, {
+            method: 'GET',
+            headers: {
+                'Range': 'bytes=1000000-1500000'
+            }
+        });
+
+        console.log('fetched 3');
+        console.log(audio.duration);
+    }
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
