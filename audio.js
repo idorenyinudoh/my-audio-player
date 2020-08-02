@@ -120,7 +120,6 @@ xhr.addEventListener('load', () => {
 });
 xhr.open('GET', `${audio.src}`);
 xhr.setRequestHeader('Accept','audio/mpeg');
-xhr.setRequestHeader('Range','bytes=0-499999');
 xhr.send();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
