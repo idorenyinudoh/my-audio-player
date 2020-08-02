@@ -113,6 +113,16 @@ controlPlayback = {
 //     });
 // })();
 
+const xhr = new XMLHttpRequest();
+xhr.addEventListener('load', () => {
+    console.log(xhr.getAllResponseHeaders());
+    console.log(audio.duration);
+});
+xhr.open('GET', `${audio.src}`);
+xhr.setRequestHeader('Accept','audio/mpeg');
+xhr.setRequestHeader('Range','bytes=0-499999');
+xhr.send();
+
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
 
