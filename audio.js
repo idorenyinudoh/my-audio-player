@@ -118,8 +118,8 @@ const audioCont = new AudioContext();
 xhr.responseType = 'arraybuffer';
 xhr.addEventListener('load', () => {
     audioCont.decodeAudioData(xhr.response, (buffer) => {
-        let duration = buffer.duration;
-    })
+        console.log(buffer.duration);
+        console.log(buffer.length);
 });
 xhr.open('GET', `${audio.src}`);
 xhr.setRequestHeader('Accept','audio/mpeg');
