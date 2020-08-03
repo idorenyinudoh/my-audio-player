@@ -122,6 +122,11 @@ xhr.addEventListener('load', () => {
         console.log(buffer.length);
     });
     let contentRange = xhr.getResponseHeader('Content-Range');
+    // convert to number, then find mb size, then find kb size(but multiply by 1000, not 1024)
+    let sizeInKb = (parseInt(contentRange.slice(contentRange.indexOf('/')+1))/1048576).toFixed(2)*1000;
+    // assuming bitrate is always 192, secs = 8 * sizeInKb / bitrate
+    let secs = 8*sizeInKb/192;
+    console.log(time(secs));
 });
 xhr.open('GET', `${audio.src}`);
 xhr.setRequestHeader('Accept','audio/mpeg');
