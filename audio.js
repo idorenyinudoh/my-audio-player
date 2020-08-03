@@ -120,6 +120,12 @@ xhr.addEventListener('load', () => {
     audioCont.decodeAudioData(xhr.response, (buffer) => {
         console.log(buffer.duration);
         console.log(buffer.length);
+    });
+    let contentRange = xhr.getResponseHeader('Content-Range');
+    let sizeInMb = (parseInt(contentRange.slice(contentRange.indexOf('/')+1))/1048576).toFixed(2);
+    let minutes = Math.floor(sizeInMb / 1.44); //assuming the bitrate is 192kbps
+    let seconds = Math.floor(Math.floor((sizeInMb % 1.44).toFixed(2) * 1024) / 24); //also assuming the bitrate is 192kbps
+    console.log(`${minutes}:${seconds}`);
 });
 xhr.open('GET', `${audio.src}`);
 xhr.setRequestHeader('Accept','audio/mpeg');
