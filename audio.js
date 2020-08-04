@@ -1,5 +1,5 @@
-let playAnimation;
 const varz = {
+    playAnimation: null,
     playIcon: document.getElementById('play-icon'),
     range: document.getElementById('range-input'),
     audio: document.querySelector('audio')
