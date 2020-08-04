@@ -42,7 +42,7 @@ audioPlayerInteraction = {
     // function to set max attribute of range, show duration, and show buffered data on metadata load
     metadata: {
         forProgress() {
-            if(audio.duration > 0)root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+            if(audio.duration > 0)audioPlayerInteraction.root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
         },
         main() {
             range.max = Math.floor(audio.duration);
@@ -53,7 +53,7 @@ audioPlayerInteraction = {
     // function to be called on range input (and when the rAF is running)
     inputEvent() {
         document.querySelector('#current-time').textContent = audioPlayerInteraction.time(range.value);
-        root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+        audioPlayerInteraction.root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
     },
     // rAF for updating the current time and range value of the audio player
     updateCurrentTime() {
