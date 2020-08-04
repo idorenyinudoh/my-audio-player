@@ -107,13 +107,13 @@ audioPlayerInteraction = {
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
-if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
+if(audio.readyState > 0) audioPlayerInteraction.metadata.main(); else audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
 
 // control playbackkkkkkkk
-playIcon.addEventListener('click', () => {controlPlayback.playBack();});
+playIcon.addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
 
 // show buffered data on audio load
-audio.addEventListener('progress', metadata.forProgress);
+audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
 
 // for addition and removal of focus state of play and range
 playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
@@ -123,10 +123,10 @@ range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
 range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
 range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
 range.addEventListener('input', () => {
-    controlRaf.stop();
-    inputEvent();
+    audioPlayerInteraction.controlRaf.stop();
+    audioPlayerInteraction.inputEvent();
 });
 range.addEventListener('change', () => {
     audio.currentTime = range.value;
-    if (!audio.paused) controlRaf.play();
+    if (!audio.paused) audioPlayerInteraction.controlRaf.play();
 });
