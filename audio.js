@@ -79,13 +79,13 @@ audioPlayerInteraction = {
         playBack() {
             if(this.isShowingPlay) {
                 varz.audio.play();
-                playAnimation.playSegments([14, 28], true);
+                varz.playAnimation.playSegments([14, 28], true);
                 varz.playIcon.setAttribute('aria-label', 'pause');
                 audioPlayerInteraction.controlRaf.play();
                 this.isShowingPlay = false;
             } else {
                 if(!varz.audio.paused)varz.audio.pause();
-                playAnimation.playSegments([0, 14], true);
+                varz.playAnimation.playSegments([0, 14], true);
                 varz.playIcon.setAttribute('aria-label', 'play');
                 audioPlayerInteraction.controlRaf.stop();
                 this.isShowingPlay = true;
@@ -96,7 +96,7 @@ audioPlayerInteraction = {
 // load the play animation asynchronously
 (async () => {
     await bodymovin.loadAnimation;
-    playAnimation = bodymovin.loadAnimation({
+    varz.playAnimation = bodymovin.loadAnimation({
         container: varz.playIcon,
         path: 'data.json', //for production
         // path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
@@ -104,7 +104,7 @@ audioPlayerInteraction = {
         loop: false,
         autoplay: false
     });
-    playAnimation.goToAndStop(14, true);
+    varz.playAnimation.goToAndStop(14, true);
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
