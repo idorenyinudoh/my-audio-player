@@ -8,21 +8,21 @@ const varz = {
 audioPlayerPresentation = {
     // so the focus state only shows on keyboard application, and not mouse for the play icon
     addPlayFocus() {
-        if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) playIcon.classList.add('play-focus');
+        if(document.activeElement === varz.playIcon && varz.playIcon.classList.contains('play-focus') === false) varz.playIcon.classList.add('play-focus');
     },
     removePlayFocus() {
-        if(playIcon.classList.contains('play-focus')) playIcon.classList.remove('play-focus');
+        if(varz.playIcon.classList.contains('play-focus')) varz.playIcon.classList.remove('play-focus');
     },
     // so the focus state only shows on keyboard application, and not mouse for the range
     addRangeFocus() {
-        if(document.activeElement === range && range.classList.contains('range-focus') === false) {
-            range.classList.add('range-focus');
+        if(document.activeElement === varz.range && varz.range.classList.contains('range-focus') === false) {
+            varz.range.classList.add('range-focus');
             document.querySelector('div#range-container').classList.add('outline');
         }
     },
     removeRangeFocus() {
-        if(range.classList.contains('range-focus')) {
-            range.classList.remove('range-focus');
+        if(varz.range.classList.contains('range-focus')) {
+            varz.range.classList.remove('range-focus');
             document.querySelector('div#range-container').classList.remove('outline');
         }
     }
@@ -42,22 +42,22 @@ audioPlayerInteraction = {
     // function to set max attribute of range, show duration, and show buffered data on metadata load
     metadata: {
         forProgress() {
-            if(audio.duration > 0)audioPlayerInteraction.root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+            if(varz.audio.duration > 0)audioPlayerInteraction.root.style.setProperty('--buffered-width', `${Math.floor(varz.audio.buffered.end(varz.audio.buffered.length - 1)) / varz.range.max * 100}%`);
         },
         main() {
-            range.max = Math.floor(audio.duration);
-            document.querySelector('#duration').textContent = audioPlayerInteraction.time(range.max);
+            varz.range.max = Math.floor(varz.audio.duration);
+            document.querySelector('#duration').textContent = audioPlayerInteraction.time(varz.range.max);
             this.forProgress();
         }
     },
     // function to be called on range input (and when the rAF is running)
     inputEvent() {
-        document.querySelector('#current-time').textContent = audioPlayerInteraction.time(range.value);
-        audioPlayerInteraction.root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+        document.querySelector('#current-time').textContent = audioPlayerInteraction.time(varz.range.value);
+        audioPlayerInteraction.root.style.setProperty('--before-width', `${varz.range.value / varz.range.max * 100}%`);
     },
     // rAF for updating the current time and range value of the audio player
     updateCurrentTime() {
-        range.value = Math.floor(audio.currentTime);
+        varz.range.value = Math.floor(varz.audio.currentTime);
         audioPlayerInteraction.inputEvent();
         audioPlayerInteraction.rAF = requestAnimationFrame(audioPlayerInteraction.updateCurrentTime);
     },
@@ -78,15 +78,15 @@ audioPlayerInteraction = {
         isShowingPlay: true,
         playBack() {
             if(this.isShowingPlay) {
-                audio.play();
+                varz.audio.play();
                 playAnimation.playSegments([14, 28], true);
-                playIcon.setAttribute('aria-label', 'pause');
+                varz.playIcon.setAttribute('aria-label', 'pause');
                 audioPlayerInteraction.controlRaf.play();
                 this.isShowingPlay = false;
             } else {
-                if(!audio.paused) audio.pause();
+                if(!varz.audio.paused)varz.audio.pause();
                 playAnimation.playSegments([0, 14], true);
-                playIcon.setAttribute('aria-label', 'play');
+                varz.playIcon.setAttribute('aria-label', 'play');
                 audioPlayerInteraction.controlRaf.stop();
                 this.isShowingPlay = true;
             }
@@ -97,7 +97,7 @@ audioPlayerInteraction = {
 (async () => {
     await bodymovin.loadAnimation;
     playAnimation = bodymovin.loadAnimation({
-        container: playIcon,
+        container: varz.playIcon,
         path: 'data.json', //for production
         // path: 'http://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
         renderer: 'svg',
@@ -108,26 +108,26 @@ audioPlayerInteraction = {
 })();
 
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
-if(audio.readyState > 0) audioPlayerInteraction.metadata.main(); else audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
+if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
 
 // control playbackkkkkkkk
-playIcon.addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
+varz.playIcon.addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
 
 // show buffered data on audio load
-audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
+varz.audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
 
 // for addition and removal of focus state of play and range
-playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
-playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
-playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
-range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
-range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
-range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
-range.addEventListener('input', () => {
+varz.playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
+varz.playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
+varz.playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
+varz.range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
+varz.range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
+varz.range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
+varz.range.addEventListener('input', () => {
     audioPlayerInteraction.controlRaf.stop();
     audioPlayerInteraction.inputEvent();
 });
-range.addEventListener('change', () => {
-    audio.currentTime = range.value;
-    if (!audio.paused) audioPlayerInteraction.controlRaf.play();
+varz.range.addEventListener('change', () => {
+    varz.audio.currentTime=varz.range.value;
+    if(!varz.audio.paused)audioPlayerInteraction.controlRaf.play();
 });
