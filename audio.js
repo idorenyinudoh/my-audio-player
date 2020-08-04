@@ -1,7 +1,9 @@
 let playAnimation;
-const playIcon = document.getElementById('play-icon'),
-range = document.getElementById('range-input'),
-audio = document.querySelector('audio'),
+const varz = {
+    playIcon: document.getElementById('play-icon'),
+    range: document.getElementById('range-input'),
+    audio: document.querySelector('audio')
+},
 //playFocus and rangeFocus in one object
 audioPlayerPresentation = {
     // so the focus state only shows on keyboard application, and not mouse for the play icon
