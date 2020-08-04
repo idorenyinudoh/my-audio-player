@@ -1,4 +1,4 @@
-let playAnimation, rAF;
+let playAnimation;
 const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
