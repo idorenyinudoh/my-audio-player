@@ -103,36 +103,6 @@ controlPlayback = {
     playAnimation.goToAndStop(14, true);
 })();
 
-// (async () => {
-//     await fetch(`${audio.src}`, {
-//         method: 'GET',
-//         headers: {
-//             'Connection':'keep-alive',
-//             'Accept':'audio/mpeg',
-//         }
-//     });
-// })();
-
-const xhr = new XMLHttpRequest();
-const audioCont = new AudioContext();
-xhr.responseType = 'arraybuffer';
-xhr.addEventListener('load', () => {
-    audioCont.decodeAudioData(xhr.response, (buffer) => {
-        console.log(buffer.duration);
-        console.log(buffer.length);
-    });
-    let contentRange = xhr.getResponseHeader('Content-Range');
-    // convert to number, then find mb size, then find kb size(but multiply by 1000, not 1024)
-    let sizeInKb = (parseInt(contentRange.slice(contentRange.indexOf('/')+1))/1048576).toFixed(2)*1000;
-    // assuming bitrate is always 192, secs = 8 * sizeInKb / bitrate
-    let secs = 8*sizeInKb/192;
-    console.log(time(secs));
-});
-xhr.open('GET', `${audio.src}`);
-xhr.setRequestHeader('Accept','audio/mpeg');
-xhr.setRequestHeader('Range','bytes=0-499999');
-xhr.send();
-
 // set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(audio.readyState > 0) metadata.main(); else audio.addEventListener('loadedmetadata', () => {metadata.main();});
 
