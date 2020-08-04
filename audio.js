@@ -4,16 +4,13 @@ const varz = {
     range: document.getElementById('range-input'),
     audio: document.querySelector('audio')
 },
-//playFocus and rangeFocus in one object
 audioPlayerPresentation = {
-    // so the focus state only shows on keyboard application, and not mouse for the play icon
     addPlayFocus() {
         if(document.activeElement === varz.playIcon && varz.playIcon.classList.contains('play-focus') === false) varz.playIcon.classList.add('play-focus');
     },
     removePlayFocus() {
         if(varz.playIcon.classList.contains('play-focus')) varz.playIcon.classList.remove('play-focus');
     },
-    // so the focus state only shows on keyboard application, and not mouse for the range
     addRangeFocus() {
         if(document.activeElement === varz.range && varz.range.classList.contains('range-focus') === false) {
             varz.range.classList.add('range-focus');
@@ -28,9 +25,7 @@ audioPlayerPresentation = {
     }
 },
 audioPlayerInteraction = {
-    // HTMLHtmlElement
     root: document.querySelector('html'),
-    // function for the whatever time of the audio player
     time(val) {
         let min = Math.floor(val / 60);
         let secsCalc = () => {
@@ -39,7 +34,6 @@ audioPlayerInteraction = {
         }
         return `${min}:${secsCalc()}`;
     },
-    // function to set max attribute of range, show duration, and show buffered data on metadata load
     metadata: {
         forProgress() {
             if(varz.audio.duration > 0)audioPlayerInteraction.root.style.setProperty('--buffered-width', `${Math.floor(varz.audio.buffered.end(varz.audio.buffered.length - 1)) / varz.range.max * 100}%`);
@@ -50,18 +44,15 @@ audioPlayerInteraction = {
             this.forProgress();
         }
     },
-    // function to be called on range input (and when the rAF is running)
     inputEvent() {
         document.querySelector('#current-time').textContent = audioPlayerInteraction.time(varz.range.value);
         audioPlayerInteraction.root.style.setProperty('--before-width', `${varz.range.value / varz.range.max * 100}%`);
     },
-    // rAF for updating the current time and range value of the audio player
     updateCurrentTime() {
         varz.range.value = Math.floor(varz.audio.currentTime);
         audioPlayerInteraction.inputEvent();
         audioPlayerInteraction.rAF = requestAnimationFrame(audioPlayerInteraction.updateCurrentTime);
     },
-    // object with methods for playing and stopping rAF
     controlRaf: {
         isPlayingRaf: false,
         play() {
@@ -73,7 +64,6 @@ audioPlayerInteraction = {
             this.isPlayingRaf = false;
         }
     },
-    // function to control playback
     controlPlayback: {
         isShowingPlay: true,
         playBack() {
@@ -93,7 +83,6 @@ audioPlayerInteraction = {
         }
     }
 };
-// load the play animation asynchronously
 (async () => {
     await bodymovin.loadAnimation;
     varz.playAnimation = bodymovin.loadAnimation({
@@ -106,17 +95,9 @@ audioPlayerInteraction = {
     });
     varz.playAnimation.goToAndStop(14, true);
 })();
-
-// set max attribute of range, show duration, and show buffered data when the metadata of the audio has loaded
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
-
-// control playbackkkkkkkk
 varz.playIcon.addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
-
-// show buffered data on audio load
 varz.audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
-
-// for addition and removal of focus state of play and range
 varz.playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
 varz.playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
 varz.playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
