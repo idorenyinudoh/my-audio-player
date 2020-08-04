@@ -26,8 +26,6 @@ audioPlayerPresentation = {
     }
 },
 audioPlayerInteraction = {
-    // variable that animationframe would be set to
-    rAF,
     // HTMLHtmlElement
     root: document.querySelector('html'),
     // function for the whatever time of the audio player
