@@ -1,6 +1,5 @@
 let playAnimation;
 const playIcon = document.getElementById('play-icon'),
-root = document.querySelector('html'),
 range = document.getElementById('range-input'),
 audio = document.querySelector('audio'),
 //playFocus and rangeFocus in one object
@@ -29,6 +28,8 @@ audioPlayerPresentation = {
 audioPlayerInteraction = {
     // variable that animationframe would be set to
     rAF,
+    // HTMLHtmlElement
+    root: document.querySelector('html'),
     // function for the whatever time of the audio player
     time(val) {
         let min = Math.floor(val / 60);
