@@ -111,11 +111,10 @@ playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 // show buffered data on audio load
 audio.addEventListener('progress', metadata.forProgress);
 
-// playFocus we defined earlier
+// for addition and removal of focus state of play and range
 playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
 playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
 playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
-// rangeFocus we defined earlier
 range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
 range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
 range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
