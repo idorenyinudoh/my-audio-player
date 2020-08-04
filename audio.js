@@ -112,13 +112,13 @@ playIcon.addEventListener('click', () => {controlPlayback.playBack();});
 audio.addEventListener('progress', metadata.forProgress);
 
 // playFocus we defined earlier
-playIcon.addEventListener('keyup', togglePlayFocus.add);
-playIcon.addEventListener('blur', togglePlayFocus.remove);
-playIcon.addEventListener('pointerdown', togglePlayFocus.remove);
+playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
+playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
+playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
 // rangeFocus we defined earlier
-range.addEventListener('keyup', toggleRangeFocus.add);
-range.addEventListener('blur', toggleRangeFocus.remove);
-range.addEventListener('pointerdown', toggleRangeFocus.remove);
+range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
+range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
+range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
 range.addEventListener('input', () => {
     controlRaf.stop();
     inputEvent();
