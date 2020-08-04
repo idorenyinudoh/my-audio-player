@@ -26,65 +26,69 @@ audioPlayerPresentation = {
         }
     }
 },
-// function for the whatever time of the audio player
-time = (val) => {
-    let min = Math.floor(val / 60);
-    let secsCalc = () => {
-        let secs = val % 60;
-        return secs < 10 ? `0${secs}` : `${secs}`;
-    }
-    return `${min}:${secsCalc()}`;
-},
-// function to set max attribute of range, show duration, and show buffered data on metadata load
-metadata = {
-    forProgress() {
-        if(audio.duration > 0)root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+audioPlayerInteraction = {
+    // variable that animationframe would be set to
+    rAF,
+    // function for the whatever time of the audio player
+    time(val) {
+        let min = Math.floor(val / 60);
+        let secsCalc = () => {
+            let secs = val % 60;
+            return secs < 10 ? `0${secs}` : `${secs}`;
+        }
+        return `${min}:${secsCalc()}`;
     },
-    main() {
-        range.max = Math.floor(audio.duration);
-        document.querySelector('#duration').textContent = time(range.max);
-        this.forProgress();
-    }
-},
-// function to be called on range input (and when the rAF is running)
-inputEvent = () => {
-    document.querySelector('#current-time').textContent = time(range.value);
-    root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
-},
-// rAF for updating the current time and range value of the audio player
-updateCurrentTime = () => {
-    range.value = Math.floor(audio.currentTime);
-    inputEvent();
-    rAF = requestAnimationFrame(updateCurrentTime);
-},
-// object with methods for playing and stopping rAF
-controlRaf = {
-    isPlayingRaf: false,
-    play() {
-        requestAnimationFrame(updateCurrentTime);
-        this.isPlayingRaf = true;
+    // function to set max attribute of range, show duration, and show buffered data on metadata load
+    metadata: {
+        forProgress() {
+            if(audio.duration > 0)root.style.setProperty('--buffered-width', `${Math.floor(audio.buffered.end(audio.buffered.length - 1)) / range.max * 100}%`);
+        },
+        main() {
+            range.max = Math.floor(audio.duration);
+            document.querySelector('#duration').textContent = audioPlayerInteraction.time(range.max);
+            this.forProgress();
+        }
     },
-    stop() {
-        cancelAnimationFrame(rAF);
-        this.isPlayingRaf = false;
-    }
-},
-// function to control playback
-controlPlayback = {
-    isShowingPlay: true,
-    playBack() {
-        if(this.isShowingPlay) {
-            audio.play();
-            playAnimation.playSegments([14, 28], true);
-            playIcon.setAttribute('aria-label', 'pause');
-            controlRaf.play();
-            this.isShowingPlay = false;
-        } else {
-            audio.pause();
-            playAnimation.playSegments([0, 14], true);
-            playIcon.setAttribute('aria-label', 'play');
-            controlRaf.stop();
-            this.isShowingPlay = true;
+    // function to be called on range input (and when the rAF is running)
+    inputEvent() {
+        document.querySelector('#current-time').textContent = audioPlayerInteraction.time(range.value);
+        root.style.setProperty('--before-width', `${range.value / range.max * 100}%`);
+    },
+    // rAF for updating the current time and range value of the audio player
+    updateCurrentTime() {
+        range.value = Math.floor(audio.currentTime);
+        audioPlayerInteraction.inputEvent();
+        audioPlayerInteraction.rAF = requestAnimationFrame(audioPlayerInteraction.updateCurrentTime);
+    },
+    // object with methods for playing and stopping rAF
+    controlRaf: {
+        isPlayingRaf: false,
+        play() {
+            requestAnimationFrame(audioPlayerInteraction.updateCurrentTime);
+            this.isPlayingRaf = true;
+        },
+        stop() {
+            cancelAnimationFrame(audioPlayerInteraction.rAF);
+            this.isPlayingRaf = false;
+        }
+    },
+    // function to control playback
+    controlPlayback: {
+        isShowingPlay: true,
+        playBack() {
+            if(this.isShowingPlay) {
+                audio.play();
+                playAnimation.playSegments([14, 28], true);
+                playIcon.setAttribute('aria-label', 'pause');
+                audioPlayerInteraction.controlRaf.play();
+                this.isShowingPlay = false;
+            } else {
+                audio.pause();
+                playAnimation.playSegments([0, 14], true);
+                playIcon.setAttribute('aria-label', 'play');
+                audioPlayerInteraction.controlRaf.stop();
+                this.isShowingPlay = true;
+            }
         }
     }
 };
