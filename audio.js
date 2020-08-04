@@ -3,24 +3,23 @@ const playIcon = document.getElementById('play-icon'),
 root = document.querySelector('html'),
 range = document.getElementById('range-input'),
 audio = document.querySelector('audio'),
-// so the focus state only shows on keyboard application, and not mouse for the play icon
-togglePlayFocus = {
-    add() {
+//playFocus and rangeFocus in one object
+audioPlayerPresentation = {
+    // so the focus state only shows on keyboard application, and not mouse for the play icon
+    addPlayFocus() {
         if(document.activeElement === playIcon && playIcon.classList.contains('play-focus') === false) playIcon.classList.add('play-focus');
     },
-    remove() {
+    removePlayFocus() {
         if(playIcon.classList.contains('play-focus')) playIcon.classList.remove('play-focus');
-    }
-},
-// so the focus state only shows on keyboard application, and not mouse for the range 
-toggleRangeFocus = {
-    add() {
+    },
+    // so the focus state only shows on keyboard application, and not mouse for the range
+    addRangeFocus() {
         if(document.activeElement === range && range.classList.contains('range-focus') === false) {
             range.classList.add('range-focus');
             document.querySelector('div#range-container').classList.add('outline');
         }
     },
-    remove() {
+    removeRangeFocus() {
         if(range.classList.contains('range-focus')) {
             range.classList.remove('range-focus');
             document.querySelector('div#range-container').classList.remove('outline');
