@@ -83,7 +83,7 @@ audioPlayerInteraction = {
                 audioPlayerInteraction.controlRaf.play();
                 this.isShowingPlay = false;
             } else {
-                audio.pause();
+                if(!audio.paused) audio.pause();
                 playAnimation.playSegments([0, 14], true);
                 playIcon.setAttribute('aria-label', 'play');
                 audioPlayerInteraction.controlRaf.stop();
