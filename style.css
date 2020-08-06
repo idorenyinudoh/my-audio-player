@@ -27,7 +27,7 @@ html {
 }
 .prenext {
     padding: calc(4.5px - 0.05vw);
-    border: 1px solid black;
+    border: 0;
     background: inherit;
     width: 39px;
     height: 39px;
@@ -35,8 +35,7 @@ html {
 }
 #play-button {
     padding: calc(4.5px - 0.05vw);
-    /* border: 0; */
-    border: 1px solid black;
+    border: 0;
     background: inherit;
     width: 45px;
     height: 45px;
