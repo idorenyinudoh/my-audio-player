@@ -90,6 +90,31 @@ audioPlayerInteraction = {
                 audioPlayerInteraction.controlRaf.stop();
                 this.isShowingPlay = true;
             }
+        },
+        prenext() {
+            if(!this.isShowingPlay)varz.audio.autoplay = true;else varz.audio.autoplay = false;
+            varz.range.value = 0;
+            document.getElementById('current-time').textContent = '0:00';
+            audioPlayerInteraction.root.style.setProperty('--before-width','0%');
+            audioPlayerInteraction.root.style.setProperty('--buffered-width','0%');
+        },
+        previous() {
+            for(let i=0; i<varz.src.length; i++){
+                if(varz.audio.src === varz.src[i]){
+                    if(i===0)varz.audio.src=varz.src[varz.src.length-1];else varz.audio.src=varz.src[i-1];
+                    this.prenext();
+                    break;
+                }
+            }
+        },
+        next() {
+            for(let i=0; i<varz.src.length; i++){
+                if(varz.audio.src === varz.src[i]){
+                    if(i===varz.src.length-1)varz.audio.src=varz.src[0];else varz.audio.src=varz.src[i+1];
+                    this.prenext();
+                    break;
+                }
+            }
         }
     }
 };
@@ -137,9 +162,11 @@ varz.range.addEventListener('change', () => {
 });
 varz.arr[1].addEventListener('click', () => {
     varz.previousAnimation.playSegments([10, 25], true);
+    audioPlayerInteraction.controlPlayback.previous();
 });
 varz.arr[2].addEventListener('click', () => {
     varz.nextAnimation.playSegments([10, 25], true);
+    audioPlayerInteraction.controlPlayback.next();
 });
 varz.arr.forEach((i) => {
     i.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
