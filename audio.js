@@ -2,9 +2,11 @@ const varz = {
     playAnimation: null,
     previousAnimation: null,
     nextAnimation: null,
-    playIcon: document.getElementById('play-button'),
-    previousIcon: document.getElementById('previous-button'),
-    nextIcon:document.getElementById('next-button'),
+    arr: [
+        playIcon = document.getElementById('play-button'),
+        previousIcon=document.getElementById('previous-button'),
+        nextIcon=document.getElementById('next-button')
+    ],
     range: document.getElementById('range-input'),
     audio: document.querySelector('audio')
 },
