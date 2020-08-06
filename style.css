@@ -75,7 +75,8 @@ input[type="range"]::before {
     cursor: pointer;
 }
 .range-focus:focus::-webkit-slider-runnable-track {
-    background-color: rgba(0, 58, 119, 0.5);
+    /* background-color: rgba(0, 58, 119, 0.5); */
+    background: linear-gradient(to right, rgba(0, 58, 119, 0.6) var(--buffered-width), rgba(0, 58, 119, 0.2) var(--buffered-width));
 }
 .range-focus:focus::before {
     background-color: #003a77;
@@ -110,7 +111,7 @@ input[type="range"]::-moz-range-progress {
     background-color: #2464a6;
 }
 .range-focus:focus::-moz-range-track {
-    background-color: rgba(0, 58, 119, 0.5);
+    background: linear-gradient(to right, rgba(0, 58, 119, 0.6) var(--buffered-width), rgba(0, 58, 119, 0.2) var(--buffered-width));
 }
 input[type="range"]::-moz-focus-outer {
     border: 0;
@@ -154,7 +155,7 @@ input[type="range"]::-ms-fill-upper {
     background: linear-gradient(to right, rgba(36, 100, 166, 0.6) var(--buffered-width), rgba(36, 100, 166, 0.2) var(--buffered-width));
 }
 .range-focus:focus::-ms-fill-upper {
-    background-color: #003a77;
+    background: linear-gradient(to right, rgba(0, 58, 119, 0.6) var(--buffered-width), rgba(0, 58, 119, 0.2) var(--buffered-width));
 }
 input[type="range"]::-ms-thumb {
     box-sizing: content-box;
