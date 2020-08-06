@@ -6,8 +6,11 @@ html {
 }
 #audio-container {
     display: grid;
-    grid-template-columns: 39px 3.5ch 1fr 3.5ch;
-    grid-template-rows: 39px;
+    grid-template-columns: 3.5ch 1fr 3.5ch;
+    grid-template-rows: 45px 20px;
+    grid-template-areas:
+    ". buttons ."
+    "cur range dur";
     gap: 5px;
     place-content: center;
     place-items: center;
