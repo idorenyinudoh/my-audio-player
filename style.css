@@ -18,7 +18,13 @@ html {
     margin: auto;
     max-width: 600px;
 }
-#play-icon {
+#control-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    place-items: center;
+    grid-area: buttons;
+}
     padding: calc(4.5px - 0.05vw);
     border: 0;
     background: inherit;
