@@ -97,6 +97,22 @@ audioPlayerInteraction = {
         loop: false,
         autoplay: false
     });
+    varz.previousAnimation = bodymovin.loadAnimation({
+        container: varz.previousIcon,
+        path: 'previous.json', //for production
+        // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-backwards/skip-backwards.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+    });
+    varz.nextAnimation = bodymovin.loadAnimation({
+        container: varz.nextIcon,
+        path: 'previous.json', //for production
+        // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+    });
     varz.playAnimation.goToAndStop(14, true);
 })();
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
