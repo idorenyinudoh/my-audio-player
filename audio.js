@@ -80,13 +80,13 @@ audioPlayerInteraction = {
             if(this.isShowingPlay) {
                 varz.audio.play();
                 varz.playAnimation.playSegments([14, 28], true);
-                varz.playIcon.setAttribute('aria-label', 'pause');
+                varz.arr[0].setAttribute('aria-label', 'pause');
                 audioPlayerInteraction.controlRaf.play();
                 this.isShowingPlay = false;
             } else {
                 if(!varz.audio.paused)varz.audio.pause();
                 varz.playAnimation.playSegments([0, 14], true);
-                varz.playIcon.setAttribute('aria-label', 'play');
+                varz.arr[0].setAttribute('aria-label', 'play');
                 audioPlayerInteraction.controlRaf.stop();
                 this.isShowingPlay = true;
             }
@@ -96,7 +96,7 @@ audioPlayerInteraction = {
 (async () => {
     await bodymovin.loadAnimation;
     varz.playAnimation = bodymovin.loadAnimation({
-        container: varz.playIcon,
+        container: varz.arr[0],
         path: 'pause.json', //for production
         // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
         renderer: 'svg',
@@ -104,7 +104,7 @@ audioPlayerInteraction = {
         autoplay: false
     });
     varz.previousAnimation = bodymovin.loadAnimation({
-        container: varz.previousIcon,
+        container: varz.arr[1],
         path: 'previous.json', //for production
         // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-backwards/skip-backwards.json',
         renderer: 'svg',
@@ -112,7 +112,7 @@ audioPlayerInteraction = {
         autoplay: false
     });
     varz.nextAnimation = bodymovin.loadAnimation({
-        container: varz.nextIcon,
+        container: varz.arr[2],
         path: 'previous.json', //for production
         // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
         renderer: 'svg',
@@ -122,7 +122,7 @@ audioPlayerInteraction = {
     varz.playAnimation.goToAndStop(14, true);
 })();
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
-varz.playIcon.addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
+varz.arr[0].addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
 varz.audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
 varz.playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
 varz.playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
@@ -138,9 +138,9 @@ varz.range.addEventListener('change', () => {
     varz.audio.currentTime=varz.range.value;
     if(!varz.audio.paused)audioPlayerInteraction.controlRaf.play();
 });
-varz.previousIcon.addEventListener('click', () => {
+varz.arr[1].addEventListener('click', () => {
     varz.previousAnimation.playSegments([10, 25], true);
 });
-varz.nextIcon.addEventListener('click', () => {
+varz.arr[2].addEventListener('click', () => {
     varz.nextAnimation.playSegments([10, 25], true);
 });
