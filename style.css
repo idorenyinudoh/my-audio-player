@@ -33,6 +33,15 @@ html {
     height: 39px;
     cursor: pointer;
 }
+#play-icon {
+    padding: calc(4.5px - 0.05vw);
+    /* border: 0; */
+    border: 1px solid black;
+    background: inherit;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
 button:focus {
     outline: 0;
 }
