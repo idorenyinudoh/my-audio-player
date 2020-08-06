@@ -58,7 +58,7 @@ audioPlayerInteraction = {
         },
         main() {
             varz.range.max = Math.floor(varz.audio.duration);
-            document.querySelector('#duration').textContent = audioPlayerInteraction.time(varz.range.max);
+            audioPlayerInteraction.dur.textContent = audioPlayerInteraction.time(varz.range.max);
             this.forProgress();
         }
     },
@@ -103,6 +103,7 @@ audioPlayerInteraction = {
             if(!this.isShowingPlay)varz.audio.autoplay = true;else varz.audio.autoplay = false;
             varz.range.value = 0;
             document.getElementById('current-time').textContent = '0:00';
+            audioPlayerInteraction.dur.textContent = '0:00';
             audioPlayerInteraction.root.style.setProperty('--before-width','0%');
             audioPlayerInteraction.root.style.setProperty('--buffered-width','0%');
         },
