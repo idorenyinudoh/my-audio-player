@@ -33,7 +33,7 @@ html {
     height: 39px;
     cursor: pointer;
 }
-#play-icon {
+#play-button {
     padding: calc(4.5px - 0.05vw);
     /* border: 0; */
     border: 1px solid black;

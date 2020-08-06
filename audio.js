@@ -1,6 +1,6 @@
 const varz = {
     playAnimation: null,
-    playIcon: document.getElementById('play-icon'),
+    playIcon: document.getElementById('play-button'),
     previousIcon: document.getElementById('previous-button'),
     nextIcon:document.getElementById('next-button'),
     range: document.getElementById('range-input'),
