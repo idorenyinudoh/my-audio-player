@@ -144,7 +144,7 @@ audioPlayerInteraction = {
     });
     varz.nextAnimation = bodymovin.loadAnimation({
         container: varz.arr[2],
-        path: 'previous.json', //for production
+        path: 'next.json', //for production
         // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
         renderer: 'svg',
         loop: false,
