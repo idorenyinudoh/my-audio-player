@@ -1,5 +1,7 @@
 const varz = {
     playAnimation: null,
+    previousAnimation: null,
+    nextAnimation: null,
     playIcon: document.getElementById('play-button'),
     previousIcon: document.getElementById('previous-button'),
     nextIcon:document.getElementById('next-button'),
