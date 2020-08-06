@@ -132,3 +132,9 @@ varz.range.addEventListener('change', () => {
     varz.audio.currentTime=varz.range.value;
     if(!varz.audio.paused)audioPlayerInteraction.controlRaf.play();
 });
+varz.previousIcon.addEventListener('click', () => {
+    varz.previousAnimation.playSegments([10, 25], true);
+});
+varz.nextIcon.addEventListener('click', () => {
+    varz.nextAnimation.playSegments([10, 25], true);
+});
