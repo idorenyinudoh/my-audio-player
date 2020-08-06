@@ -12,10 +12,14 @@ const varz = {
 },
 audioPlayerPresentation = {
     addPlayFocus() {
-        if(document.activeElement === varz.playIcon && varz.playIcon.classList.contains('play-focus') === false) varz.playIcon.classList.add('play-focus');
+        varz.arr.forEach((i) => {
+            if(document.activeElement === i && i.classList.contains('play-focus') === false) i.classList.add('play-focus');
+        });
     },
     removePlayFocus() {
-        if(varz.playIcon.classList.contains('play-focus')) varz.playIcon.classList.remove('play-focus');
+        varz.arr.forEach((i) => {
+            if(i.classList.contains('play-focus')) i.classList.remove('play-focus');
+        });
     },
     addRangeFocus() {
         if(document.activeElement === varz.range && varz.range.classList.contains('range-focus') === false) {
