@@ -124,9 +124,6 @@ audioPlayerInteraction = {
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
 varz.arr[0].addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
 varz.audio.addEventListener('progress', audioPlayerInteraction.metadata.forProgress);
-varz.playIcon.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
-varz.playIcon.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
-varz.playIcon.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
 varz.range.addEventListener('keyup', audioPlayerPresentation.addRangeFocus);
 varz.range.addEventListener('blur', audioPlayerPresentation.removeRangeFocus);
 varz.range.addEventListener('pointerdown', audioPlayerPresentation.removeRangeFocus);
@@ -143,4 +140,9 @@ varz.arr[1].addEventListener('click', () => {
 });
 varz.arr[2].addEventListener('click', () => {
     varz.nextAnimation.playSegments([10, 25], true);
+});
+varz.arr.forEach((i) => {
+    i.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
+    i.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
+    i.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
 });
