@@ -25,8 +25,9 @@ html {
     place-items: center;
     grid-area: buttons;
 }
+.prenext {
     padding: calc(4.5px - 0.05vw);
-    border: 0;
+    border: 1px solid black;
     background: inherit;
     width: 39px;
     height: 39px;
