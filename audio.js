@@ -179,3 +179,4 @@ varz.arr.forEach((i) => {
     i.addEventListener('blur', audioPlayerPresentation.removePlayFocus);
     i.addEventListener('pointerdown', audioPlayerPresentation.removePlayFocus);
 });
+varz.audio.addEventListener('ended', () => {audioPlayerInteraction.controlPlayback.next()});
