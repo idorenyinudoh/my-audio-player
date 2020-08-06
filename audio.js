@@ -42,6 +42,8 @@ audioPlayerPresentation = {
 },
 audioPlayerInteraction = {
     root: document.querySelector('html'),
+    cur: document.getElementById('current-time'),
+    dur: document.getElementById('duration'),
     time(val) {
         let min = Math.floor(val / 60);
         let secsCalc = () => {
