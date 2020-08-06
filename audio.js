@@ -63,8 +63,8 @@ audioPlayerInteraction = {
         }
     },
     inputEvent() {
-        audioPlayerInteraction.root.style.setProperty('--before-width', `${varz.range.value / varz.range.max * 100}%`);
         this.cur.textContent = audioPlayerInteraction.time(varz.range.value);
+        this.root.style.setProperty('--before-width', `${varz.range.value / varz.range.max * 100}%`);
     },
     updateCurrentTime() {
         varz.range.value = Math.floor(varz.audio.currentTime);
