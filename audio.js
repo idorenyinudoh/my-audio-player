@@ -170,12 +170,12 @@ varz.range.addEventListener('change', () => {
     if(!varz.audio.paused)audioPlayerInteraction.controlRaf.play();
 });
 varz.arr[1].addEventListener('click', () => {
-    varz.previousAnimation.playSegments([10, 25], true);
     audioPlayerInteraction.controlPlayback.previous();
+    varz.previousAnimation.playSegments([10, 25], true);
 });
 varz.arr[2].addEventListener('click', () => {
-    varz.nextAnimation.playSegments([10, 25], true);
     audioPlayerInteraction.controlPlayback.next();
+    varz.nextAnimation.playSegments([10, 25], true);
 });
 varz.arr.forEach((i) => {
     i.addEventListener('keyup', audioPlayerPresentation.addPlayFocus);
