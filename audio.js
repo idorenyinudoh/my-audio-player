@@ -63,8 +63,8 @@ audioPlayerInteraction = {
         }
     },
     inputEvent() {
-        document.querySelector('#current-time').textContent = audioPlayerInteraction.time(varz.range.value);
         audioPlayerInteraction.root.style.setProperty('--before-width', `${varz.range.value / varz.range.max * 100}%`);
+        this.cur.textContent = audioPlayerInteraction.time(varz.range.value);
     },
     updateCurrentTime() {
         varz.range.value = Math.floor(varz.audio.currentTime);
@@ -102,7 +102,7 @@ audioPlayerInteraction = {
         prenext() {
             if(!this.isShowingPlay)varz.audio.autoplay = true;else varz.audio.autoplay = false;
             varz.range.value = 0;
-            document.getElementById('current-time').textContent = '0:00';
+            audioPlayerInteraction.cur.textContent = '0:00';
             audioPlayerInteraction.dur.textContent = '0:00';
             audioPlayerInteraction.root.style.setProperty('--before-width','0%');
             audioPlayerInteraction.root.style.setProperty('--buffered-width','0%');
