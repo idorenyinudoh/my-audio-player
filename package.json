@@ -16,4 +16,7 @@
     "url": "https://github.com/idorenyinudoh/my-audio-player/issues"
   },
   "homepage": "https://github.com/idorenyinudoh/my-audio-player#readme",
+  "dependencies": {
+    "bodymovin": "^4.13.0"
+  }
 }
