@@ -127,65 +127,34 @@ audioPlayerInteraction = {
         }
     }
 };
-(async () => {
-    // await bodymovin.loadAnimation;
-    await import('./node_modules/bodymovin/build/player/bodymovin.min.js').then((m) => {
-        console.log(m);
-        varz.playAnimation = m.loadAnimation({
-            container: varz.arr[0],
-            path: 'pause.json', //for production
-            // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false
-        });
-        varz.previousAnimation = m.loadAnimation({
-            container: varz.arr[1],
-            path: 'previous.json', //for production
-            // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-backwards/skip-backwards.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false
-        });
-        varz.nextAnimation = m.loadAnimation({
-            container: varz.arr[2],
-            path: 'next.json', //for production
-            // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
-            renderer: 'svg',
-            loop: false,
-            autoplay: false
-        });
-        varz.playAnimation.addEventListener('data_ready', () => {
-            varz.playAnimation.goToAndStop(14, true);
-        });
+(() => {
+    varz.playAnimation = bodymovin.loadAnimation({
+        container: varz.arr[0],
+        // path: 'pause.json', //for production
+        path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
     });
-    // varz.playAnimation = bodymovin.loadAnimation({
-    //     container: varz.arr[0],
-    //     path: 'pause.json', //for production
-    //     // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
-    //     renderer: 'svg',
-    //     loop: false,
-    //     autoplay: false
-    // });
-    // varz.previousAnimation = bodymovin.loadAnimation({
-    //     container: varz.arr[1],
-    //     path: 'previous.json', //for production
-    //     // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-backwards/skip-backwards.json',
-    //     renderer: 'svg',
-    //     loop: false,
-    //     autoplay: false
-    // });
-    // varz.nextAnimation = bodymovin.loadAnimation({
-    //     container: varz.arr[2],
-    //     path: 'next.json', //for production
-    //     // path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
-    //     renderer: 'svg',
-    //     loop: false,
-    //     autoplay: false
-    // });
-    // varz.playAnimation.addEventListener('data_ready', () => {
-    //     varz.playAnimation.goToAndStop(14, true);
-    // });
+    varz.previousAnimation = bodymovin.loadAnimation({
+        container: varz.arr[1],
+        // path: 'previous.json', //for production
+        path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-backwards/skip-backwards.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+    });
+    varz.nextAnimation = bodymovin.loadAnimation({
+        container: varz.arr[2],
+        // path: 'next.json', //for production
+        path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/skip-forwards/skip-forwards.json',
+        renderer: 'svg',
+        loop: false,
+        autoplay: false
+    });
+    varz.playAnimation.addEventListener('data_ready', () => {
+        varz.playAnimation.goToAndStop(14, true);
+    });
 })();
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
 varz.arr[0].addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
