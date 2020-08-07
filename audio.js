@@ -153,7 +153,9 @@ audioPlayerInteraction = {
         loop: false,
         autoplay: false
     });
-    varz.playAnimation.goToAndStop(14, true);
+    varz.playAnimation.addEventListener('data_ready', () => {
+        varz.playAnimation.goToAndStop(14, true);
+    });
 })();
 if(varz.audio.readyState > 0) audioPlayerInteraction.metadata.main(); else varz.audio.addEventListener('loadedmetadata', () => { audioPlayerInteraction.metadata.main();});
 varz.arr[0].addEventListener('click', () => {audioPlayerInteraction.controlPlayback.playBack();});
