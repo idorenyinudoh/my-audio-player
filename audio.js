@@ -1,3 +1,5 @@
+import {bodymovin} from "./node_modules/bodymovin/build/player/bodymovin.min.js";
+console.log(bodymovin);
 const varz = {
     playAnimation: null,
     previousAnimation: null,
