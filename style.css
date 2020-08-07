@@ -7,7 +7,7 @@ html {
 #audio-container {
     display: grid;
     grid-template-columns: 3.5ch 1fr 3.5ch;
-    grid-template-rows: 45px 20px;
+    grid-template-rows: 48px 20px;
     grid-template-areas:
     ". buttons ."
     "cur range dur";
@@ -20,25 +20,23 @@ html {
 }
 #control-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(3, 48px);
+    gap: 10px;
     place-items: center;
     grid-area: buttons;
 }
 .prenext {
-    padding: 4px;
+    padding: 9px;
     border: 0;
+    height: 48px;
     background: inherit;
-    width: 39px;
-    height: 39px;
     cursor: pointer;
 }
 #play-button {
-    padding: 4px;
+    padding: 5px;
     border: 0;
+    height: 48px;
     background: inherit;
-    width: 45px;
-    height: 45px;
     cursor: pointer;
 }
 button:focus {
