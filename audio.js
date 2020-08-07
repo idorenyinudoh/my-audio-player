@@ -128,7 +128,7 @@ audioPlayerInteraction = {
     }
 };
 (async () => {
-    await bodymovin.loadAnimation;
+    // await bodymovin.loadAnimation;
     varz.playAnimation = bodymovin.loadAnimation({
         container: varz.arr[0],
         path: 'pause.json', //for production
