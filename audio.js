@@ -1,5 +1,3 @@
-import {bodymovinjs} from "./node_modules/bodymovin/build/player/bodymovin.min.js";
-console.log(bodymovinjs);
 const varz = {
     playAnimation: null,
     previousAnimation: null,
@@ -131,6 +129,8 @@ audioPlayerInteraction = {
 };
 (async () => {
     // await bodymovin.loadAnimation;
+    await import('./node_modules/bodymovin/build/player/bodymovin.js');
+    console.log(bodymovinjs);
     varz.playAnimation = bodymovin.loadAnimation({
         container: varz.arr[0],
         path: 'pause.json', //for production
