@@ -1,0 +1,19 @@
+{
+  "name": "my-audio-player",
+  "version": "1.0.0",
+  "description": "idk my audio player?",
+  "main": "audio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idorenyinudoh/my-audio-player.git"
+  },
+  "author": "48",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idorenyinudoh/my-audio-player/issues"
+  },
+  "homepage": "https://github.com/idorenyinudoh/my-audio-player#readme",
+}
