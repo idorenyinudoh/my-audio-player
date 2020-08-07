@@ -129,7 +129,7 @@ audioPlayerInteraction = {
 };
 (async () => {
     // await bodymovin.loadAnimation;
-    await import('bodymovin').then((m) => {
+    await import('./node_modules/bodymovin/build/player/bodymovin.min.js').then((m) => {
         console.log(m);
         varz.playAnimation = m.loadAnimation({
             container: varz.arr[0],
